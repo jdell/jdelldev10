@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-15" ?>
+<configuracion>
+	<App>
+		<secciones>
+			<seccion name="Entorno">
+				<!-- Ficheros de Ayuda -->
+				<add key="pathOnlineHelpFile" value="_help/BaseBallonLineHelp.xml" />
+				<!-- Aviso de mejoras -->
+				<add key="pathImprovementFile" value="_help/version.html" />
+				<add key="showImprovementMsg" value="True" />
+			</seccion>
+
+		</secciones>
+	</App>
+	<Service />
+	<AddIn />
+	<common>
+		<secciones>
+			<seccion name="administracion">
+				<add key="MasterUser" value ="JOEL;JOE" />
+				<!-- Para el envío de correos anónimos -->
+				<add key="SystemUser" value ="BASEBALL" />
+				<!-- Cuenta de Correo de SISTEMA -->
+				<add key="SystemMail" value ="usuario@email.com" /> 
+				<add key="SMTPServer" value ="servidor" />
+			</seccion>
+			<seccion name="mantenimiento">
+				<!-- Los posibles valores son True/False, cualquier otro provocará un error de formato-->
+				<add key="enMantenimiento" value ="False" />
+				<!-- Tiempo de espera expresado en minutos -->
+				<add key="tiempoEspera" value ="1" />
+				<add key="mensaje" value ="Aplicación en mantenimiento" />
+				<add key="detalle" value="La aplicación se cerrará automáticamente dentro de 1 minuto para pasar a mantenimiento. En aproximadamente 30 minutos, la aplicación estará de nuevo disponible. Disculpe las molestias." />
+				<!-- Los posibles valores son True/False, cualquier otro provocará un error de formato-->
+				<!-- Si está a True no se ejecutan tareas de notificación-->
+				<add key="debug" value ="True" />
+			</seccion>
+		</secciones>
+		<conexiones>
+      <!--
+      <conexion name="baseball"  providerName="System.Data.SqlClient" connectionString="b1e7715ce37e063ca2d5ce449f269bf7d21ea20b22adac80d812d864036fc62b53d3b24563c3accea52c3dd7a3f5ba05211e6a6537161b18eb086375ebb5a58f30db9a3622b9dbb7e6f34835f683bdd61fad7b14d5624c8bffd3bf19ba8941894bc2ba9ce4b168c3e42651ce7c7dd82365b5f6f6af50e618689b4c17969d0d8058a987e654eefe31e79ddc52aed939f89b20ae0fe86ae51da63c997e6e07a2dc620d8c8a4f0b12edce5f144b7a3b2fc0d8b0be8d3ef624a9de0289745351083f54af8da5c29e3529" appRoleName="" appRolePwd="" />
+      -->
+      <conexion name="baseball"  providerName="System.Data.SqlClient" connectionString="b1e7715ce37e063ca2d5ce449f269bf7d21ea20b22adac80d812d864036fc62b53d3b24563c3acce9dc5dc8497bf55447b7e77d7340cc33aa728f4e5e32c04726a59363dae74b8be9e4caa0c11d26f9d14e26e247ec15c4365e5e1ba1698dd5ca54337604cf84836244cb60a5fda093022f770c9a799de17" appRoleName="" appRolePwd="" />
+    </conexiones>	
+	</common>
+</configuracion>

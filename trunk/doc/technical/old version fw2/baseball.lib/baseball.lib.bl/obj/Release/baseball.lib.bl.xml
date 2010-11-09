@@ -1,0 +1,132 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+baseball.lib.bl
+</name>
+</assembly>
+<members>
+<member name="P:baseball.lib.bl._events.ProgressEventArgs.Info">
+	<summary>
+ Información del proceso que se está ejecutando actualmente.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:baseball.lib.bl._events.ProgressEventArgs.Current">
+	<summary>
+ Número de proceso que se está ejecutando actualmente.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:baseball.lib.bl._events.ProgressEventArgs.Total">
+	<summary>
+ Número total de procesos a ejecutar.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:baseball.lib.bl._events.NotificationEventArgs.#ctor(System.String,System.String,System.Int32)">
+	<summary>
+ Constructor del evento.
+ </summary>
+	<param name="tiempoEspera">Indica el tiempo -expresado en segundos- que transcurrirá desde que se lanza el evento
+ hasta que se ejecuta la acción que provoca el evento.</param>
+	<param name="mensaje">Mensaje para avisar al usuario de que se cierra la BL.</param>
+	<param name="detalle">Detalles. Por ejemplo, cuánto tiempo se tardará en volver a abrir la BL
+ o motivo por el que se cierra.</param>
+</member><member name="P:baseball.lib.bl._events.NotificationEventArgs.tiempoEspera">
+	<summary>
+ Expresado en segundos
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:baseball.lib.bl._events.NotificationEventArgs">
+	<summary>
+ En ciertas ocasiones la BL necesita enviar a las vistas mensajes para informar de que ciertas
+ cosas van a ocurrir en la BL (por ejemplo el cierre de la BL por mantenimiento). Esta clase 
+ permite definir esos eventos de forma homogénea.
+ </summary>
+	<remarks>
+ Incluye un campo que permite indicar el tiempo que transcurrirá
+ desde la notificación hasta que se ejecuta la acción descrita por el evento.
+ </remarks>
+</member><member name="M:baseball.lib.bl._template.ActionBL.execute">
+	<summary>
+ Ejecuta la acción.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:baseball.lib.bl._template.ActionBL.accion">
+	<summary>
+ Acción a implementar en las clases derivadas.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:baseball.lib.bl._template.ActionBL">
+	<summary>
+ Define la forma en que se ejecutan las acciones. Todas las acciones de la BL tienen un método "ejecutar"
+ que ejecuta una determinada acción. Esta clase obliga a las acciones de la BL a comportarse del mismo modo.
+ </summary>
+	<remarks></remarks>
+</member><member name="M:baseball.lib.bl._common.secciones.AdministracionSection.SetMasterUsers(System.String,System.String)">
+	<summary>
+ Establece la lista de usuarios "Master" a partir de una cadena con los 
+ RPs de los usuarios separados por el separador indicado (por defecto ';')
+ </summary>
+	<param name="cadena"></param>
+	<param name="separador"></param>
+	<remarks></remarks>
+</member><member name="M:baseball.lib.bl._common.secciones.PISection.IsTag(System.String)">
+	<summary>
+ Indica sin un tag indicado es un tag a tener en cuenta o no
+ </summary>
+	<param name="tag">tag a evaluar</param>
+	<returns>resultado de la evaluación</returns>
+	<remarks>
+ Los tags deberían almacenarse en una lista. Se almacenan así -en propiedades- por falta de tiempo y restricciones del XML.
+ La version 2.0 del mismo debería permitirlo.
+ </remarks>
+</member><member name="F:baseball.lib.bl._common.cache.fileWatcher">
+	<summary>
+ Conexion activa
+ </summary>
+	<remarks></remarks>
+</member><member name="F:baseball.lib.bl._common.cache.USUARIO">
+	<summary>
+ Usuario actualmente conectado a la aplicación
+ </summary>
+	<remarks></remarks>
+</member><member name="P:baseball.lib.bl._common.cache.IsMasterUser">
+	<summary>
+ Indica si el usuario actualmente conectado tiene la
+ condición de MasterUser en la aplicación
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="E:baseball.lib.bl._common.cache.Processing">
+	<summary>
+ Evento para avisar de todas las acciones que ejecuta la caché
+ </summary>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="E:baseball.lib.bl._common.cache.BLClosing">
+	<summary>Este evento se lanza cuando se detecta el paso a mantenimiento (cierre de la BL) en el fichero de configuración</summary>
+	<remarks>En este caso, se manda el tiempo que tardará en hacerse efectivo el cierre de la BL.</remarks>
+</member><member name="E:baseball.lib.bl._common.cache.BLClosed">
+	<summary>Este evento se lanza cuando se ha hecho efectivo el cierre de la BL.</summary>
+</member><member name="E:baseball.lib.bl._common.cache.BLOpen">
+	<summary>Este evento se lanza cuando la BL queda abierta para su uso.</summary>
+</member><member name="M:baseball.lib.bl._common.cache.ChequeaConfiguracion">
+	<summary>Lee la configuración y comprueba si hay cambios que deban ser notificados.</summary>
+</member><member name="M:baseball.lib.bl._common.cache.setBLCerrada(System.Boolean)">
+	<summary>Determina si el proyecto está en mantenimiento (BL Cerrada)</summary>
+	<remarks>El uso habitual de esta propiedad consiste en ponerla a TRUE cuando ha
+ pasado el tiempo indicado en "tiempoEspera" después de recibir el evento de que
+ el fichero de configuración ha cambiado y que ya tiene un "enMantenimiento = SI"</remarks>
+</member>
+</members>
+</doc>

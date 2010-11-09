@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db" Class="baseballDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\data\db.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="com.mxply.app.baseball.lib.Properties.Settings" SettingsPropertyName="dbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Federation" Member="Federations">
+    <Type Name="Federation">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Federation_Club" Member="Clubs" ThisKey="Id" OtherKey="FederationId" Type="Club" />
+      <Association Name="Federation_License" Member="Licenses" ThisKey="Id" OtherKey="FederationId" Type="License" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Club" Member="Clubs">
+    <Type Name="Club">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FederationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Club_Team" Member="Teams" ThisKey="Id" OtherKey="ClubId" Type="Team" />
+      <Association Name="Federation_Club" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
+      <Association Name="Federation1_Club" Member="Federation1" ThisKey="FederationId" OtherKey="Id" Type="Federation1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TypeLicense" Member="TypeLicenses">
+    <Type Name="TypeLicense">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InternalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TypeLicense_License" Member="Licenses" ThisKey="Id" OtherKey="TypeId" Type="License" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Federation" Member="Federation1s">
+    <Type Name="Federation1">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Federation1_Club" Member="Clubs" ThisKey="Id" OtherKey="FederationId" Type="Club" />
+      <Association Name="Federation1_License" Member="Licenses" ThisKey="Id" OtherKey="FederationId" Type="License" />
+    </Type>
+  </Table>
+  <Table Name="dbo.License" Member="Licenses">
+    <Type Name="License">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FederationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PersonId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="TypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Federation_License" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
+      <Association Name="Federation1_License" Member="Federation1" ThisKey="FederationId" OtherKey="Id" Type="Federation1" IsForeignKey="true" />
+      <Association Name="TypeLicense_License" Member="TypeLicense" ThisKey="TypeId" OtherKey="Id" Type="TypeLicense" IsForeignKey="true" />
+      <Association Name="Person_License" Member="Person" ThisKey="PersonId" OtherKey="Id" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LicenseCounter" Member="LicenseCounters">
+    <Type Name="LicenseCounter">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Person" Member="Persons">
+    <Type Name="Person">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Person_License" Member="Licenses" ThisKey="Id" OtherKey="PersonId" Type="License" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Team" Member="Teams">
+    <Type Name="Team">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Club_Team" Member="Club" ThisKey="ClubId" OtherKey="Id" Type="Club" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

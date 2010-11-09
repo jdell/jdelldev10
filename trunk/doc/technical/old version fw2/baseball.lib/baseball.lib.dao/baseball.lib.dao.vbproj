@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9F7B380E-8F13-41D0-A8C1-323B159BCBEF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>baseball.lib.dao</RootNamespace>
+    <AssemblyName>baseball.lib.dao</AssemblyName>
+    <MyType>Windows</MyType>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>baseball.lib.dao.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>baseball.lib.dao.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="framework.crypto, Version=0.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\baseball.lib.common\_dll\framework.crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="framework.exceptions, Version=0.0.8.0, Culture=neutral, PublicKeyToken=d0dfd29390566188, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\baseball.lib.common\_dll\framework.exceptions.dll</HintPath>
+    </Reference>
+    <Reference Include="framework.util, Version=0.0.8.0, Culture=neutral, PublicKeyToken=43ecb7b0d9a31afb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\baseball.lib.common\_dll\framework.util.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="anotador\action\add.vb" />
+    <Compile Include="anotador\action\checkIfExists.vb" />
+    <Compile Include="anotador\action\get.vb" />
+    <Compile Include="anotador\action\getAll.vb" />
+    <Compile Include="anotador\action\remove.vb" />
+    <Compile Include="anotador\action\update.vb" />
+    <Compile Include="anotador\dao\anotadorDAO.vb" />
+    <Compile Include="anotador\fachada.vb" />
+    <Compile Include="arbitro\action\add.vb" />
+    <Compile Include="arbitro\action\checkIfExists.vb" />
+    <Compile Include="arbitro\action\get.vb" />
+    <Compile Include="arbitro\action\getAll.vb" />
+    <Compile Include="arbitro\action\remove.vb" />
+    <Compile Include="arbitro\action\update.vb" />
+    <Compile Include="arbitro\dao\arbitroDAO.vb" />
+    <Compile Include="arbitro\fachada.vb" />
+    <Compile Include="categoria\action\add.vb" />
+    <Compile Include="categoria\action\checkIfExists.vb" />
+    <Compile Include="categoria\action\get.vb" />
+    <Compile Include="categoria\action\getAll.vb" />
+    <Compile Include="categoria\action\remove.vb" />
+    <Compile Include="categoria\action\update.vb" />
+    <Compile Include="categoria\dao\categoriaDAO.vb" />
+    <Compile Include="categoria\fachada.vb" />
+    <Compile Include="competicion\action\add.vb" />
+    <Compile Include="competicion\action\checkIfExists.vb" />
+    <Compile Include="competicion\action\get.vb" />
+    <Compile Include="competicion\action\getAll.vb" />
+    <Compile Include="competicion\action\remove.vb" />
+    <Compile Include="competicion\action\update.vb" />
+    <Compile Include="competicion\dao\competicionDAO.vb" />
+    <Compile Include="competicion\fachada.vb" />
+    <Compile Include="estadistica\action\getAllForFielding.vb" />
+    <Compile Include="estadistica\action\getAllForBatting.vb" />
+    <Compile Include="estadistica\action\getAllForBaseRunning.vb" />
+    <Compile Include="estadistica\action\getAllForCatcher.vb" />
+    <Compile Include="estadistica\action\getAllForPitcher.vb" />
+    <Compile Include="estadistica\dao\estadisticaDAO.vb" />
+    <Compile Include="estadistica\fachada.vb" />
+    <Compile Include="hojaanotacionplayer\action\add.vb" />
+    <Compile Include="hojaanotacionplayer\action\checkIfExists.vb" />
+    <Compile Include="hojaanotacionplayer\action\get.vb" />
+    <Compile Include="hojaanotacionplayer\action\getAll.vb" />
+    <Compile Include="hojaanotacionplayer\action\remove.vb" />
+    <Compile Include="hojaanotacionplayer\action\update.vb" />
+    <Compile Include="hojaanotacionplayer\dao\hojaanotacionplayerDAO.vb" />
+    <Compile Include="hojaanotacionplayer\fachada.vb" />
+    <Compile Include="hojaanotacionpitcher\action\add.vb" />
+    <Compile Include="hojaanotacionpitcher\action\checkIfExists.vb" />
+    <Compile Include="hojaanotacionpitcher\action\get.vb" />
+    <Compile Include="hojaanotacionpitcher\action\getAll.vb" />
+    <Compile Include="hojaanotacionpitcher\action\remove.vb" />
+    <Compile Include="hojaanotacionpitcher\action\update.vb" />
+    <Compile Include="hojaanotacionpitcher\dao\hojaanotacionpitcherDAO.vb" />
+    <Compile Include="hojaanotacionpitcher\fachada.vb" />
+    <Compile Include="hojaanotacioncatcher\action\add.vb" />
+    <Compile Include="hojaanotacioncatcher\action\checkIfExists.vb" />
+    <Compile Include="hojaanotacioncatcher\action\get.vb" />
+    <Compile Include="hojaanotacioncatcher\action\getAll.vb" />
+    <Compile Include="hojaanotacioncatcher\action\remove.vb" />
+    <Compile Include="hojaanotacioncatcher\action\update.vb" />
+    <Compile Include="hojaanotacioncatcher\dao\hojaanotacioncatcherDAO.vb" />
+    <Compile Include="hojaanotacioncatcher\fachada.vb" />
+    <Compile Include="hojaanotacion\action\add.vb" />
+    <Compile Include="hojaanotacion\action\checkIfExists.vb" />
+    <Compile Include="hojaanotacion\action\get.vb" />
+    <Compile Include="hojaanotacion\action\getAll.vb" />
+    <Compile Include="hojaanotacion\action\remove.vb" />
+    <Compile Include="hojaanotacion\action\update.vb" />
+    <Compile Include="hojaanotacion\dao\hojaanotacionDAO.vb" />
+    <Compile Include="hojaanotacion\fachada.vb" />
+    <Compile Include="partido\action\add.vb" />
+    <Compile Include="partido\action\checkIfExists.vb" />
+    <Compile Include="partido\action\getAllByCompeticion.vb" />
+    <Compile Include="partido\action\get.vb" />
+    <Compile Include="partido\action\getAll.vb" />
+    <Compile Include="partido\action\remove.vb" />
+    <Compile Include="partido\action\update.vb" />
+    <Compile Include="partido\dao\partidoDAO.vb" />
+    <Compile Include="partido\fachada.vb" />
+    <Compile Include="jugador\action\add.vb" />
+    <Compile Include="jugador\action\checkIfExists.vb" />
+    <Compile Include="jugador\action\get.vb" />
+    <Compile Include="jugador\action\getAll.vb" />
+    <Compile Include="jugador\action\remove.vb" />
+    <Compile Include="jugador\action\update.vb" />
+    <Compile Include="jugador\dao\jugadorDAO.vb" />
+    <Compile Include="jugador\fachada.vb" />
+    <Compile Include="usuario\action\add.vb" />
+    <Compile Include="usuario\action\checkIfExists.vb" />
+    <Compile Include="usuario\action\get.vb" />
+    <Compile Include="usuario\action\getAll.vb" />
+    <Compile Include="usuario\action\remove.vb" />
+    <Compile Include="usuario\action\update.vb" />
+    <Compile Include="usuario\dao\usuarioDAO.vb" />
+    <Compile Include="usuario\fachada.vb" />
+    <Compile Include="equipo\action\add.vb" />
+    <Compile Include="equipo\action\checkIfExists.vb" />
+    <Compile Include="equipo\action\remove.vb" />
+    <Compile Include="equipo\action\get.vb" />
+    <Compile Include="equipo\action\getAll.vb" />
+    <Compile Include="equipo\action\update.vb" />
+    <Compile Include="equipo\dao\equipoDAO.vb" />
+    <Compile Include="equipo\fachada.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="_common\DAOFactory.vb" />
+    <Compile Include="_common\facade.vb" />
+    <Compile Include="_common\plain\NonTransactionalPlainAction.vb" />
+    <Compile Include="_common\plain\PlainAction.vb" />
+    <Compile Include="_common\plain\PlainActionProcessor.vb" />
+    <Compile Include="_common\plain\TransactionalPlainAction.vb" />
+    <Compile Include="_common\tCONEXION.vb" />
+    <Compile Include="_common\util.vb" />
+    <Compile Include="_template\objectDAO.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\baseball.lib.common\baseball.lib.common.vbproj">
+      <Project>{7466CDC3-A735-4DFD-8A84-223960753070}</Project>
+      <Name>baseball.lib.common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\baseball.lib.vo\baseball.lib.vo.vbproj">
+      <Project>{960147C3-BAD0-447C-892D-9D6A86E8B0A3}</Project>
+      <Name>baseball.lib.vo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="baseballconfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_data\bd.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_data\bd_log.ldf">
+      <DependentUpon>bd.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.1.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2005 Express</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

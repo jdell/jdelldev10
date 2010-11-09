@@ -1,0 +1,12 @@
+bin\Debug\baseball.lib.vo.dll
+bin\Debug\baseball.lib.vo.pdb
+bin\Debug\baseball.lib.vo.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\baseball.lib.vo.Resources.resources
+obj\Debug\baseball.lib.vo.vbproj.GenerateResource.Cache
+obj\Debug\baseball.lib.vo.dll
+obj\Debug\baseball.lib.vo.xml
+obj\Debug\baseball.lib.vo.pdb
+bin\Debug\baseball.lib.common.dll
+bin\Debug\baseball.lib.common.pdb
+bin\Debug\baseball.lib.common.xml
