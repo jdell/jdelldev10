@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.625" name="baseball">
+  <DataContextMoniker Name="/baseballDataContext" />
+  <nestedChildShapes>
+    <classShape Id="90425ffc-9811-4f11-98dd-8d5681101c6b" absoluteBounds="1.25, 0.875, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/baseballDataContext/Federation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50f1ab9b-28ab-4d44-bd95-c0ddcc714fc6" absoluteBounds="1.2650000000000001, 1.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="261f89cc-f679-41ca-8ed4-4910b33d6851" absoluteBounds="4.375, 4, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/baseballDataContext/Club" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1479bf35-a645-4bd9-8b18-0f352e1ed2d2" absoluteBounds="4.39, 4.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4629e625-5a8a-495b-a75b-756b18ae26df" absoluteBounds="1.625, 3.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/baseballDataContext/TypeLicense" />
+      <nestedChildShapes>
+        <elementListCompartment Id="318cf170-b3e0-4f0e-8fbf-9e75cfff1399" absoluteBounds="1.6400000000000001, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ed736761-4056-41cb-9a12-9a140029b1de" absoluteBounds="0.75, 6.5, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/baseballDataContext/Federation1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56117203-7b56-46d0-8f22-7288778b0259" absoluteBounds="0.765, 6.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="94f2b55c-9cd7-4cc9-a0df-cce1f10cb129" absoluteBounds="4.375, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/baseballDataContext/License" />
+      <nestedChildShapes>
+        <elementListCompartment Id="636a2e1e-efdd-4e97-ad77-8ee6601db7c8" absoluteBounds="4.39, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6bbba898-f8c6-4e11-8ae3-867d390f83cd" absoluteBounds="3.75, 6.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/baseballDataContext/LicenseCounter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9f97e78-4041-4750-afaa-fec2d8857ca0" absoluteBounds="3.765, 7.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="11c95fe4-327a-4072-b611-2394f7db4723" absoluteBounds="1.625, 9, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/baseballDataContext/Person" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9b74af67-fc22-484e-aeab-641b6bc02f35" absoluteBounds="1.6400000000000001, 9.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1b25d1a0-184b-40e3-afe5-38fd24d37b8e" absoluteBounds="7.125, 4, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/baseballDataContext/Team" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be751df3-8c82-4c3f-ab5f-9a157ca7f84e" absoluteBounds="7.14, 4.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.40625 : 2.06899251302083); (1.40625 : 5.3550439453125); (4.04166666666667 : 5.3550439453125 : JumpStart); (4.20833333333333 : 5.3550439453125 : JumpEnd); (4.375 : 5.3550439453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/baseballDataContext/Federation/Federation_Club" />
+      <nodes>
+        <classShapeMoniker Id="90425ffc-9811-4f11-98dd-8d5681101c6b" />
+        <classShapeMoniker Id="261f89cc-f679-41ca-8ed4-4910b33d6851" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.078125 : 6.5); (1.078125 : 5.3706689453125); (4.04166666666667 : 5.3706689453125 : JumpStart); (4.20833333333333 : 5.3706689453125 : JumpEnd); (4.375 : 5.3706689453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/baseballDataContext/Federation1/Federation1_Club" />
+      <nodes>
+        <classShapeMoniker Id="ed736761-4056-41cb-9a12-9a140029b1de" />
+        <classShapeMoniker Id="261f89cc-f679-41ca-8ed4-4910b33d6851" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.25 : 1.47199625651042); (4.375 : 1.47199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/baseballDataContext/Federation/Federation_License" />
+      <nodes>
+        <classShapeMoniker Id="90425ffc-9811-4f11-98dd-8d5681101c6b" />
+        <classShapeMoniker Id="94f2b55c-9cd7-4cc9-a0df-cce1f10cb129" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.88281 : 6.5); (0.88281 : 2.42234537760417); (1.32291666666667 : 2.42234537760417 : JumpStart); (1.48958333333333 : 2.42234537760417 : JumpEnd); (4.375 : 2.42234537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/baseballDataContext/Federation1/Federation1_License" />
+      <nodes>
+        <classShapeMoniker Id="ed736761-4056-41cb-9a12-9a140029b1de" />
+        <classShapeMoniker Id="94f2b55c-9cd7-4cc9-a0df-cce1f10cb129" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.46875 : 3.875); (3.46875 : 2.59902430989583); (4.375 : 2.59902430989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/baseballDataContext/TypeLicense/TypeLicense_License" />
+      <nodes>
+        <classShapeMoniker Id="4629e625-5a8a-495b-a75b-756b18ae26df" />
+        <classShapeMoniker Id="94f2b55c-9cd7-4cc9-a0df-cce1f10cb129" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.625 : 9.69314697265625); (6 : 9.69314697265625); (6 : 5.6362939453125); (4.125 : 5.6362939453125); (4.125 : 3.0881982421875); (5.375 : 3.0881982421875); (5.375 : 2.7131982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/baseballDataContext/Person/Person_License" />
+      <nodes>
+        <classShapeMoniker Id="11c95fe4-327a-4072-b611-2394f7db4723" />
+        <classShapeMoniker Id="94f2b55c-9cd7-4cc9-a0df-cce1f10cb129" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.375 : 4.69314697265625); (7.125 : 4.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/baseballDataContext/Club/Club_Team" />
+      <nodes>
+        <classShapeMoniker Id="261f89cc-f679-41ca-8ed4-4910b33d6851" />
+        <classShapeMoniker Id="1b25d1a0-184b-40e3-afe5-38fd24d37b8e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

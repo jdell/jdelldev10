@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DummyDataSource">
+      <ConnectionProperties>
+        <ConnectString />
+        <DataProvider>SQL</DataProvider>
+      </ConnectionProperties>
+      <rd:DataSourceID>42eaa449-da37-4db6-b691-1755035b0024</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <BottomMargin>0.5cm</BottomMargin>
+  <PageWidth>29cm</PageWidth>
+  <ReportParameters>
+    <ReportParameter Name="Usuario">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=""</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Usuario</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>29cm</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="textbox26">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>13.52182cm</Left>
+        <Top>2.02645cm</Top>
+        <ZIndex>19</ZIndex>
+        <Width>2.72818cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=" : " &amp; iif(countrows()&gt;0,Sum(iif(Fields!IsAnulado.Value, 1,0),"saiiVO_incidente_incidenteVO"),0)</Value>
+      </Textbox>
+      <Textbox Name="textbox27">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>11.25cm</Left>
+        <Top>2.02645cm</Top>
+        <ZIndex>18</ZIndex>
+        <Width>2.26587cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>Anulados</Value>
+      </Textbox>
+      <Textbox Name="textbox23">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>13.52182cm</Left>
+        <Top>1.42063cm</Top>
+        <ZIndex>17</ZIndex>
+        <Width>2.72818cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=" : " &amp; iif(countrows()&gt;0,Sum(iif(Fields!IsCerrado.Value, 1,0),"saiiVO_incidente_incidenteVO"),0)</Value>
+      </Textbox>
+      <Textbox Name="textbox25">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>11.25cm</Left>
+        <Top>1.42063cm</Top>
+        <ZIndex>16</ZIndex>
+        <Width>2.26587cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>Cerrados</Value>
+      </Textbox>
+      <Textbox Name="textbox20">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>13.52182cm</Left>
+        <Top>0.81481cm</Top>
+        <ZIndex>15</ZIndex>
+        <Width>2.72818cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=" : " &amp; iif(countrows()&gt;0,Sum(iif(Fields!IsInvestigado.Value and not Fields!IsCerrado.Value, 1,0),"saiiVO_incidente_incidenteVO"),0)</Value>
+      </Textbox>
+      <Textbox Name="textbox22">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>11.25cm</Left>
+        <Top>0.81481cm</Top>
+        <ZIndex>14</ZIndex>
+        <Width>2.26587cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>Cerr. Invest.</Value>
+      </Textbox>
+      <Textbox Name="textbox18">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>13.52182cm</Left>
+        <Top>0.19709cm</Top>
+        <ZIndex>13</ZIndex>
+        <Width>2.72818cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=" : " &amp; iif(countrows()&gt;0,Sum(iif(Fields!IsInvestigado.Value or Fields!IsCerrado.Value or Fields!IsAnulado.Value, 0,1),"saiiVO_incidente_incidenteVO"),0)</Value>
+      </Textbox>
+      <Textbox Name="textbox19">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>11.25cm</Left>
+        <Top>0.19709cm</Top>
+        <ZIndex>12</ZIndex>
+        <Width>2.26587cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>Abiertos</Value>
+      </Textbox>
+      <Textbox Name="textbox10">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>2.56481cm</Left>
+        <Top>2.02645cm</Top>
+        <ZIndex>11</ZIndex>
+        <Width>7.71165cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <Format>C</Format>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <Language>es-ES</Language>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=iif(countrows()&gt;0,Sum(Fields!Total.Value, "saiiVO_incidente_incidenteVO"),0)</Value>
+      </Textbox>
+      <Textbox Name="textbox16">
+        <Left>2.42063cm</Left>
+        <Top>2.02645cm</Top>
+        <rd:DefaultName>textbox16</rd:DefaultName>
+        <ZIndex>10</ZIndex>
+        <Width>0.25cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>:</Value>
+      </Textbox>
+      <Textbox Name="textbox9">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>2.40608cm</Left>
+        <Top>1.42063cm</Top>
+        <ZIndex>9</ZIndex>
+        <Width>7.88228cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=String.Format(": {0}", CountRows())</Value>
+      </Textbox>
+      <Textbox Name="textbox8">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>2.40608cm</Left>
+        <Top>0.81481cm</Top>
+        <ZIndex>8</ZIndex>
+        <Width>7.88228cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=String.Format(": {0}", Parameters!Usuario.Value)</Value>
+      </Textbox>
+      <Textbox Name="textbox7">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>2.40608cm</Left>
+        <Top>0.19709cm</Top>
+        <rd:DefaultName>textbox7</rd:DefaultName>
+        <ZIndex>7</ZIndex>
+        <Width>7.88228cm</Width>
+        <Style>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=String.Format(": {0}", DateTime.now.ToString("dd/MM/yyyy"))</Value>
+      </Textbox>
+      <Textbox Name="textbox6">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>0.13426cm</Left>
+        <Top>2.02645cm</Top>
+        <ZIndex>6</ZIndex>
+        <Width>2.26587cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.60847cm</Height>
+        <Value>Importe</Value>
+      </Textbox>
+      <Textbox Name="textbox5">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>0.13426cm</Left>
+        <Top>1.42063cm</Top>
+        <ZIndex>5</ZIndex>
+        <Width>2.26587cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.60847cm</Height>
+        <Value>Cantidad</Value>
+      </Textbox>
+      <Textbox Name="textbox4">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>0.13426cm</Left>
+        <Top>0.81481cm</Top>
+        <ZIndex>4</ZIndex>
+        <Width>2.26587cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.60847cm</Height>
+        <Value>Usuario</Value>
+      </Textbox>
+      <Textbox Name="textbox3">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>0.13426cm</Left>
+        <Top>0.19709cm</Top>
+        <rd:DefaultName>textbox3</rd:DefaultName>
+        <ZIndex>3</ZIndex>
+        <Width>2.26587cm</Width>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>8pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.60847cm</Height>
+        <Value>Fecha</Value>
+      </Textbox>
+      <Line Name="line5">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>27.49339cm</Left>
+        <Top>2.80291cm</Top>
+        <ZIndex>2</ZIndex>
+        <Width>-27.37765cm</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Height>0cm</Height>
+      </Line>
+      <Line Name="line6">
+        <RepeatWith>incidentes</RepeatWith>
+        <Left>27.49339cm</Left>
+        <Top>2.71164cm</Top>
+        <ZIndex>1</ZIndex>
+        <Width>-27.37765cm</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Height>0cm</Height>
+      </Line>
+      <Table Name="incidentes">
+        <Left>0.17063cm</Left>
+        <DataSetName>saiiVO_incidente_incidenteVO</DataSetName>
+        <Top>3cm</Top>
+        <Width>27.32507cm</Width>
+        <Details>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Codigo">
+                      <rd:DefaultName>Codigo</rd:DefaultName>
+                      <ZIndex>7</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Codigo.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Area">
+                      <rd:DefaultName>Area</rd:DefaultName>
+                      <ZIndex>6</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Area.Value.Codigo</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Situacion">
+                      <rd:DefaultName>Situacion</rd:DefaultName>
+                      <ZIndex>5</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Situacion.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="FechaIncidente">
+                      <rd:DefaultName>FechaIncidente</rd:DefaultName>
+                      <ZIndex>4</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Code.getinfoFECHA(Fields!FechaIncidente.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="FechaCierre">
+                      <rd:DefaultName>FechaCierre</rd:DefaultName>
+                      <ZIndex>3</ZIndex>
+                      <Style>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Code.getinfoFECHA(Fields!FechaCierre.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="DescResumen">
+                      <rd:DefaultName>DescResumen</rd:DefaultName>
+                      <ZIndex>2</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!DescResumen.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="ClaseIncidente">
+                      <rd:DefaultName>ClaseIncidente</rd:DefaultName>
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!ClaseIncidente.Value.ToString()</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="Total">
+                      <rd:DefaultName>Total</rd:DefaultName>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontSize>8pt</FontSize>
+                        <Format>C</Format>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <Language>es-ES</Language>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!Total.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.5cm</Height>
+            </TableRow>
+          </TableRows>
+        </Details>
+        <Style>
+          <FontSize>8pt</FontSize>
+        </Style>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox11">
+                      <rd:DefaultName>textbox11</rd:DefaultName>
+                      <ZIndex>15</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Double</Bottom>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Codigo</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox17">
+                      <rd:DefaultName>textbox17</rd:DefaultName>
+                      <ZIndex>14</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Double</Bottom>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Área</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
+                      <ZIndex>13</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Double</Bottom>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Situacion</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox13">
+                      <rd:DefaultName>textbox13</rd:DefaultName>
+                      <ZIndex>12</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Double</Bottom>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Ocurrencia</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox24">
+                      <rd:DefaultName>textbox24</rd:DefaultName>
+                      <ZIndex>11</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Double</Bottom>
+                        </BorderStyle>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Cerrado</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox21">
+                      <rd:DefaultName>textbox21</rd:DefaultName>
+                      <ZIndex>10</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Double</Bottom>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Resumen</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox14">
+                      <rd:DefaultName>textbox14</rd:DefaultName>
+                      <ZIndex>9</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Double</Bottom>
+                        </BorderStyle>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Clase</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox15">
+                      <rd:DefaultName>textbox15</rd:DefaultName>
+                      <ZIndex>8</ZIndex>
+                      <Style>
+                        <BorderStyle>
+                          <Bottom>Double</Bottom>
+                        </BorderStyle>
+                        <TextAlign>Right</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingBottom>2pt</PaddingBottom>
+                        <FontWeight>700</FontWeight>
+                        <FontSize>8pt</FontSize>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>Valor</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.63492cm</Height>
+            </TableRow>
+          </TableRows>
+          <RepeatOnNewPage>true</RepeatOnNewPage>
+        </Header>
+        <TableColumns>
+          <TableColumn>
+            <Width>1.96575cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.22859cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>3.19434cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.96575cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.99174cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>8.25cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>6cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>2.7289cm</Width>
+          </TableColumn>
+        </TableColumns>
+        <Height>1.13492cm</Height>
+      </Table>
+    </ReportItems>
+    <Height>4.25cm</Height>
+  </Body>
+  <PageHeader>
+    <ReportItems>
+      <Line Name="line2">
+        <Left>27.53836cm</Left>
+        <Top>1.75cm</Top>
+        <ZIndex>4</ZIndex>
+        <Width>-27.30688cm</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Height>0cm</Height>
+      </Line>
+      <Line Name="line1">
+        <Left>27.53836cm</Left>
+        <Top>1.65873cm</Top>
+        <ZIndex>3</ZIndex>
+        <Width>-27.30688cm</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Height>0cm</Height>
+      </Line>
+      <Textbox Name="textbox2">
+        <Left>23.5cm</Left>
+        <Top>0.75cm</Top>
+        <ZIndex>2</ZIndex>
+        <Width>4.00463cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>11pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <FontStyle>Italic</FontStyle>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.75cm</Height>
+        <Value>C.I. A Coruña</Value>
+      </Textbox>
+      <Textbox Name="textbox1">
+        <Left>8.21031cm</Left>
+        <Top>0.65873cm</Top>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <ZIndex>1</ZIndex>
+        <Width>9.85582cm</Width>
+        <Style>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <FontWeight>700</FontWeight>
+          <FontSize>12pt</FontSize>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.75cm</Height>
+        <Value>INFORME RESUMEN DE INCIDENTES</Value>
+      </Textbox>
+      <Image Name="image2">
+        <Sizing>FitProportional</Sizing>
+        <Left>0.25cm</Left>
+        <MIMEType>image/png</MIMEType>
+        <Top>0.25cm</Top>
+        <Width>3.25cm</Width>
+        <Source>Embedded</Source>
+        <Style />
+        <Height>1.0873cm</Height>
+        <Value>logo_repsol</Value>
+      </Image>
+    </ReportItems>
+    <Height>1.84127cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageHeader>
+  <rd:ReportID>f635a4e7-40b3-48b4-9026-c25791093230</rd:ReportID>
+  <LeftMargin>0.5cm</LeftMargin>
+  <EmbeddedImages>
+    <EmbeddedImage Name="logo_repsol">
+      <ImageData>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</ImageData>
+      <MIMEType>image/png</MIMEType>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <DataSets>
+    <DataSet Name="saiiVO_incidente_incidenteVO">
+      <rd:DataSetInfo>
+        <rd:DataSetName>saiiVO.incidente</rd:DataSetName>
+        <rd:ObjectDataSourceType>saiiVO.incidente.incidenteVO, saiiVO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>incidenteVO</rd:TableName>
+      </rd:DataSetInfo>
+      <Query>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText />
+        <DataSourceName>DummyDataSource</DataSourceName>
+      </Query>
+      <Fields>
+        <Field Name="Area">
+          <rd:TypeName>saiiVO.area.areaVO</rd:TypeName>
+          <DataField>Area</DataField>
+        </Field>
+        <Field Name="ClaseIncidente">
+          <rd:TypeName>saiiVO.claseincidente.claseincidenteVO</rd:TypeName>
+          <DataField>ClaseIncidente</DataField>
+        </Field>
+        <Field Name="Codigo">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Codigo</DataField>
+        </Field>
+        <Field Name="Comision">
+          <rd:TypeName>saiiVO.comision.comisionVO</rd:TypeName>
+          <DataField>Comision</DataField>
+        </Field>
+        <Field Name="Consecuencia">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Consecuencia</DataField>
+        </Field>
+        <Field Name="DescDetalle">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>DescDetalle</DataField>
+        </Field>
+        <Field Name="DescResumen">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>DescResumen</DataField>
+        </Field>
+        <Field Name="Equipo">
+          <rd:TypeName>saiiVO.equipo.equipoVO</rd:TypeName>
+          <DataField>Equipo</DataField>
+        </Field>
+        <Field Name="Fecha">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>Fecha</DataField>
+        </Field>
+        <Field Name="FechaAnulacion">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>FechaAnulacion</DataField>
+        </Field>
+        <Field Name="FechaCierre">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>FechaCierre</DataField>
+        </Field>
+        <Field Name="FechaIncidente">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>FechaIncidente</DataField>
+        </Field>
+        <Field Name="FechaInvestigacion">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>FechaInvestigacion</DataField>
+        </Field>
+        <Field Name="Id">
+          <rd:TypeName>System.Int64</rd:TypeName>
+          <DataField>Id</DataField>
+        </Field>
+        <Field Name="IsAnulado">
+          <rd:TypeName>System.Boolean</rd:TypeName>
+          <DataField>IsAnulado</DataField>
+        </Field>
+        <Field Name="IsCerrado">
+          <rd:TypeName>System.Boolean</rd:TypeName>
+          <DataField>IsCerrado</DataField>
+        </Field>
+        <Field Name="IsInvestigado">
+          <rd:TypeName>System.Boolean</rd:TypeName>
+          <DataField>IsInvestigado</DataField>
+        </Field>
+        <Field Name="Lider">
+          <rd:TypeName>saiiVO.integrante.integranteVO</rd:TypeName>
+          <DataField>Lider</DataField>
+        </Field>
+        <Field Name="Numero">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>Numero</DataField>
+        </Field>
+        <Field Name="Situacion">
+          <rd:TypeName>System.Object</rd:TypeName>
+          <DataField>Situacion</DataField>
+        </Field>
+        <Field Name="TipoIncidente">
+          <rd:TypeName>saiiVO.tipoincidente.tipoincidenteVO</rd:TypeName>
+          <DataField>TipoIncidente</DataField>
+        </Field>
+        <Field Name="TipoLesion">
+          <rd:TypeName>saiiVO.tipolesion.tipolesionVO</rd:TypeName>
+          <DataField>TipoLesion</DataField>
+        </Field>
+        <Field Name="Total">
+          <rd:TypeName>System.Double</rd:TypeName>
+          <DataField>Total</DataField>
+        </Field>
+        <Field Name="Unidad">
+          <rd:TypeName>saiiVO.unidad.unidadVO</rd:TypeName>
+          <DataField>Unidad</DataField>
+        </Field>
+        <Field Name="Usuario">
+          <rd:TypeName>saiiVO.usuario.usuarioVO</rd:TypeName>
+          <DataField>Usuario</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <Code>function getinfoFECHA(fecha as datetime) as string
+dim res as string = string.empty
+if (fecha &lt;&gt; cdate("01/01/1900")) then
+res = fecha.tostring("dd/MM/yyyy")
+else
+res = "--/--/----"
+end if
+return res
+end function</Code>
+  <Width>27.53836cm</Width>
+  <InteractiveHeight>21cm</InteractiveHeight>
+  <Language>es-ES</Language>
+  <PageFooter>
+    <ReportItems>
+      <Line Name="line3">
+        <Left>27.37963cm</Left>
+        <Top>0.25cm</Top>
+        <ZIndex>1</ZIndex>
+        <Width>-27.05688cm</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Height>0cm</Height>
+      </Line>
+      <Textbox Name="textbox33">
+        <Left>23.5cm</Left>
+        <Top>0.25cm</Top>
+        <rd:DefaultName>textbox33</rd:DefaultName>
+        <Width>3.9709cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingBottom>2pt</PaddingBottom>
+          <PaddingRight>2pt</PaddingRight>
+          <FontStyle>Italic</FontStyle>
+          <PaddingTop>2pt</PaddingTop>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=String.Format("Página {0} de {1}", Globals!PageNumber, Globals!TotalPages)</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>1.75cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+  </PageFooter>
+  <TopMargin>0.5cm</TopMargin>
+  <PageHeight>21cm</PageHeight>
+</Report>

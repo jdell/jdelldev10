@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58D11950-AC99-48C2-AA00-B99D95C1F720}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>baseball.lib.bl</RootNamespace>
+    <AssemblyName>baseball.lib.bl</AssemblyName>
+    <MyType>Windows</MyType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>baseball.lib.bl.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>baseball.lib.bl.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="framework.exceptions, Version=0.0.8.0, Culture=neutral, PublicKeyToken=d0dfd29390566188, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\baseball.lib.common\_dll\framework.exceptions.dll</HintPath>
+    </Reference>
+    <Reference Include="framework.util, Version=0.0.8.0, Culture=neutral, PublicKeyToken=43ecb7b0d9a31afb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\baseball.lib.common\_dll\framework.util.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="anotador\doAdd.vb" />
+    <Compile Include="anotador\doGet.vb" />
+    <Compile Include="anotador\doGetAll.vb" />
+    <Compile Include="anotador\doRemove.vb" />
+    <Compile Include="anotador\doUpdate.vb" />
+    <Compile Include="arbitro\doAdd.vb" />
+    <Compile Include="arbitro\doGet.vb" />
+    <Compile Include="arbitro\doGetAll.vb" />
+    <Compile Include="arbitro\doRemove.vb" />
+    <Compile Include="arbitro\doUpdate.vb" />
+    <Compile Include="categoria\doAdd.vb" />
+    <Compile Include="categoria\doGet.vb" />
+    <Compile Include="categoria\doGetAll.vb" />
+    <Compile Include="categoria\doRemove.vb" />
+    <Compile Include="categoria\doUpdate.vb" />
+    <Compile Include="competicion\doAdd.vb" />
+    <Compile Include="competicion\doGet.vb" />
+    <Compile Include="competicion\doGetAll.vb" />
+    <Compile Include="competicion\doRemove.vb" />
+    <Compile Include="competicion\doUpdate.vb" />
+    <Compile Include="hojaanotacion\catcher\doAdd.vb" />
+    <Compile Include="hojaanotacion\catcher\doGet.vb" />
+    <Compile Include="hojaanotacion\catcher\doGetAll.vb" />
+    <Compile Include="hojaanotacion\catcher\doRemove.vb" />
+    <Compile Include="hojaanotacion\catcher\doUpdate.vb" />
+    <Compile Include="hojaanotacion\player\doAdd.vb" />
+    <Compile Include="hojaanotacion\player\doGet.vb" />
+    <Compile Include="hojaanotacion\player\doGetAll.vb" />
+    <Compile Include="hojaanotacion\player\doRemove.vb" />
+    <Compile Include="hojaanotacion\player\doUpdate.vb" />
+    <Compile Include="hojaanotacion\pitcher\doAdd.vb" />
+    <Compile Include="hojaanotacion\pitcher\doGet.vb" />
+    <Compile Include="hojaanotacion\pitcher\doGetAll.vb" />
+    <Compile Include="hojaanotacion\pitcher\doRemove.vb" />
+    <Compile Include="hojaanotacion\pitcher\doUpdate.vb" />
+    <Compile Include="hojaanotacion\doAdd.vb" />
+    <Compile Include="hojaanotacion\doGet.vb" />
+    <Compile Include="hojaanotacion\doGetAll.vb" />
+    <Compile Include="hojaanotacion\doRemove.vb" />
+    <Compile Include="hojaanotacion\doUpdate.vb" />
+    <Compile Include="partido\doGetAllByCompeticion.vb" />
+    <Compile Include="partido\doAdd.vb" />
+    <Compile Include="partido\doGet.vb" />
+    <Compile Include="partido\doGetAll.vb" />
+    <Compile Include="partido\doRemove.vb" />
+    <Compile Include="partido\doUpdate.vb" />
+    <Compile Include="jugador\doAdd.vb" />
+    <Compile Include="jugador\doGet.vb" />
+    <Compile Include="jugador\doGetAll.vb" />
+    <Compile Include="jugador\doRemove.vb" />
+    <Compile Include="jugador\doUpdate.vb" />
+    <Compile Include="usuario\doAdd.vb" />
+    <Compile Include="usuario\doGet.vb" />
+    <Compile Include="usuario\doGetAll.vb" />
+    <Compile Include="usuario\doRemove.vb" />
+    <Compile Include="usuario\doUpdate.vb" />
+    <Compile Include="equipo\doUpdate.vb" />
+    <Compile Include="equipo\doRemove.vb" />
+    <Compile Include="equipo\doAdd.vb" />
+    <Compile Include="equipo\doGet.vb" />
+    <Compile Include="equipo\doGetAll.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="_common\cache.vb" />
+    <Compile Include="_common\constantes\mensaje.vb" />
+    <Compile Include="_common\constantes\tiposeleccion.vb" />
+    <Compile Include="_common\secciones\AdministracionSection.vb" />
+    <Compile Include="_common\secciones\ConfiguracionSection.vb" />
+    <Compile Include="_common\secciones\GruposSection.vb" />
+    <Compile Include="_common\secciones\MantenimientoSection.vb" />
+    <Compile Include="_common\secciones\PISection.vb" />
+    <Compile Include="_common\secciones\section.vb" />
+    <Compile Include="_common\secciones\STSection.vb" />
+    <Compile Include="_estadistica\doGetAllForFielding.vb" />
+    <Compile Include="_estadistica\doGetAllForCatcher.vb" />
+    <Compile Include="_estadistica\doGetAllForPitcher.vb" />
+    <Compile Include="_estadistica\doGetAllForBatting.vb" />
+    <Compile Include="_estadistica\doGetAllForBaseRunning.vb" />
+    <Compile Include="_events\GesInefEventArgs.vb" />
+    <Compile Include="_events\NotificationEventArgs.vb" />
+    <Compile Include="_events\ProgressEventArgs.vb" />
+    <Compile Include="_exceptions\BaseballException.vb" />
+    <Compile Include="_exceptions\ineficiencia\IncorrectEndDateException.vb" />
+    <Compile Include="_exceptions\ineficiencia\IncorrectStartDateException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MAXIMOPendingException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingAreaException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingCauseException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingDetailException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingLeaderException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingParentException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingSummaryException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingTypeOfInefficiencyException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingUnitException.vb" />
+    <Compile Include="_exceptions\ineficiencia\MissingZoneException.vb" />
+    <Compile Include="_exceptions\ineficiencia\ValidatePendingException.vb" />
+    <Compile Include="_exceptions\partido\MissingLeagueException.vb" />
+    <Compile Include="_exceptions\partido\MissingUmpire1Exception.vb" />
+    <Compile Include="_exceptions\partido\MissingModalityException.vb" />
+    <Compile Include="_exceptions\partido\MissingCategoryException.vb" />
+    <Compile Include="_exceptions\partido\MissingVisitanteTeamException.vb" />
+    <Compile Include="_exceptions\partido\MissingHomeClubTeamException.vb" />
+    <Compile Include="_exceptions\usuario\MissingTeamException.vb" />
+    <Compile Include="_exceptions\usuario\UserNotEnabledException.vb" />
+    <Compile Include="_exceptions\usuario\UserNotFoundException.vb" />
+    <Compile Include="_exceptions\ValidatingException.vb" />
+    <Compile Include="_exceptions\_common\AccessNotAllowedException.vb" />
+    <Compile Include="_exceptions\_common\ConfigFileNotFoundException.vb" />
+    <Compile Include="_exceptions\_common\IncorrectFormatConfigFileException.vb" />
+    <Compile Include="_exceptions\_common\InitializeCacheException.vb" />
+    <Compile Include="_exceptions\_common\NullReferenceException.vb" />
+    <Compile Include="_exceptions\_common\OperationCanceledException.vb" />
+    <Compile Include="_exceptions\_common\OutOfServiceException.vb" />
+    <Compile Include="_reports\EstadisticaFielding\rptEstadisticaFielding.vb" />
+    <Compile Include="_reports\Estadistica.vb" />
+    <Compile Include="_reports\EstadisticaCatching\rptEstadisticaCatching.vb" />
+    <Compile Include="_reports\informe.vb" />
+    <Compile Include="_reports\EstadisticaBaseRunning\rptEstadisticaBaseRunning.vb" />
+    <Compile Include="_template\ActionBL.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_reports\EstadisticaFielding\rdl\rdlEstadisticaFielding.rdlc" />
+    <EmbeddedResource Include="_reports\EstadisticaBaseRunning\rdl\rdlEstadisticaBaseRunning.rdlc" />
+    <EmbeddedResource Include="_reports\EstadisticaCatching\rdl\rdlEstadisticaCatching.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\baseball.lib.common\baseball.lib.common.vbproj">
+      <Project>{7466CDC3-A735-4DFD-8A84-223960753070}</Project>
+      <Name>baseball.lib.common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\baseball.lib.dao\baseball.lib.dao.vbproj">
+      <Project>{9F7B380E-8F13-41D0-A8C1-323B159BCBEF}</Project>
+      <Name>baseball.lib.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\baseball.lib.vo\baseball.lib.vo.vbproj">
+      <Project>{960147C3-BAD0-447C-892D-9D6A86E8B0A3}</Project>
+      <Name>baseball.lib.vo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
