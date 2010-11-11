@@ -1,0 +1,21 @@
+﻿<Window x:Class="baseball.client.wpf.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="100">
+                <Button Content="Federations" />
+                <Button Content="Clubs" />
+                <Button Content="Teams" />
+                <Button Content="Players" />
+                <Button Content="Score Takers" />
+                <Button Content="Umpires" />
+                <Separator />
+                <Button Content="Championships" />
+                <Button Content="Matchs" />
+            </StackPanel>
+            <Frame x:Name="framePages" Content="{Binding CurrentPage}" />
+        </DockPanel>
+    </Grid>
+</Window>

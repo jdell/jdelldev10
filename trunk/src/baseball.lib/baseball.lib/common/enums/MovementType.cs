@@ -25,8 +25,7 @@ namespace com.mxply.app.baseball.lib.common.enums
 
         StolenBase,
         BaseByMovement,
-
-
+        
         // Defense
         Out,
         OutFly,

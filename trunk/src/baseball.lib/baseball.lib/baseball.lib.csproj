@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common\enums\ChampionshipType.cs" />
+    <Compile Include="common\enums\PlayerPosition.cs" />
     <Compile Include="common\enums\MovementType.cs" />
     <Compile Include="common\enums\MatchStatus.cs" />
     <Compile Include="common\enums\LicenseType.cs" />

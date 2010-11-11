@@ -14,7 +14,7 @@ namespace com.mxply.app.baseball.lib.common.enums
         [Description("Player")]
         Player = 1,
 
-        [Description("Ampager")]
-        Ampager = 2
+        [Description("Umpire")]
+        Umpire = 2
     }
 }
