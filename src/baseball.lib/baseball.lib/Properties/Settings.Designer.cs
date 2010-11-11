@@ -33,5 +33,16 @@ namespace com.mxply.app.baseball.lib.Properties {
                 return ((string)(this["dbConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\data\\db.mdf;Integrated " +
+            "Security=True;Connect Timeout=30;User Instance=True")]
+        public string dbConnectionString1 {
+            get {
+                return ((string)(this["dbConnectionString1"]));
+            }
+        }
     }
 }
