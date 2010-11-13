@@ -1,8 +1,0 @@
-D:\dev\src\Baseball\src\baseball.lib\baseball.lib\bin\Release\data\db.mdf
-D:\dev\src\Baseball\src\baseball.lib\baseball.lib\bin\Release\data\db_log.ldf
-D:\dev\src\Baseball\src\baseball.lib\baseball.lib\bin\Release\baseball.lib.dll.config
-D:\dev\src\Baseball\src\baseball.lib\baseball.lib\bin\Release\baseball.lib.dll
-D:\dev\src\Baseball\src\baseball.lib\baseball.lib\bin\Release\baseball.lib.pdb
-D:\dev\src\Baseball\src\baseball.lib\baseball.lib\obj\Release\ResolveAssemblyReference.cache
-D:\dev\src\Baseball\src\baseball.lib\baseball.lib\obj\Release\baseball.lib.dll
-D:\dev\src\Baseball\src\baseball.lib\baseball.lib\obj\Release\baseball.lib.pdb

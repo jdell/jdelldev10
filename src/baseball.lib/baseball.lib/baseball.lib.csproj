@@ -56,8 +56,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bl\actions\championshiptype\doGetAll.cs" />
+    <Compile Include="bl\actions\club\doDelete.cs" />
+    <Compile Include="bl\actions\club\doGetAll.cs" />
+    <Compile Include="bl\actions\club\doSave.cs" />
+    <Compile Include="bl\actions\person\doDelete.cs" />
+    <Compile Include="bl\actions\person\doGetAll.cs" />
+    <Compile Include="bl\actions\person\doSave.cs" />
+    <Compile Include="bl\actions\team\doDelete.cs" />
+    <Compile Include="bl\actions\team\doGetAll.cs" />
+    <Compile Include="bl\actions\team\doSave.cs" />
+    <Compile Include="bl\actions\position\doGetAll.cs" />
+    <Compile Include="bl\actions\movementtype\doGetAll.cs" />
+    <Compile Include="bl\actions\licensetype\doGetAll.cs" />
+    <Compile Include="bl\actions\matchstatus\doGetAll.cs" />
+    <Compile Include="bl\actions\dbintegrity\doCheck.cs" />
+    <Compile Include="bl\actions\federation\doDelete.cs" />
+    <Compile Include="bl\actions\federation\doGetAll.cs" />
+    <Compile Include="bl\actions\federation\doSave.cs" />
+    <Compile Include="bl\core\ActionBL.cs" />
+    <Compile Include="bl\core\Cache.cs" />
+    <Compile Include="bl\core\Check.cs" />
+    <Compile Include="bl\exceptions\BaseballException.cs" />
     <Compile Include="common\enums\ChampionshipType.cs" />
-    <Compile Include="common\enums\PlayerPosition.cs" />
+    <Compile Include="common\enums\Position.cs" />
     <Compile Include="common\enums\MovementType.cs" />
     <Compile Include="common\enums\MatchStatus.cs" />
     <Compile Include="common\enums\LicenseType.cs" />
@@ -66,6 +88,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>baseball.dbml</DependentUpon>
     </Compile>
+    <Compile Include="model\Club.cs" />
+    <Compile Include="model\MovementType.cs" />
+    <Compile Include="model\LicenseType.cs" />
+    <Compile Include="model\MatchStatus.cs" />
+    <Compile Include="model\ChampionshipType.cs" />
+    <Compile Include="model\Position.cs" />
+    <Compile Include="model\Federation.cs" />
+    <Compile Include="model\Person.cs" />
+    <Compile Include="model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -74,7 +105,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bl\" />
     <Folder Include="common\attributes\" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +165,12 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\mxply.net\mxply.net.common\mxply.net.common.csproj">
+      <Project>{4F938980-8128-485A-9570-58FB2D384A52}</Project>
+      <Name>mxply.net.common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

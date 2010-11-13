@@ -1,21 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db" Class="baseballDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\data\db.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True" SettingsObjectName="com.mxply.app.baseball.lib.Properties.Settings" SettingsPropertyName="dbConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Championship" Member="Championships">
-    <Type Name="Championship">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Association Name="Championship_ChampionshipOrganizer" Member="ChampionshipOrganizers" ThisKey="Id" OtherKey="ChampionshipId" Type="ChampionshipOrganizer" />
-      <Association Name="ChampionshipType_Championship" Member="ChampionshipType" ThisKey="TypeId" OtherKey="Id" Type="ChampionshipType" IsForeignKey="true" />
-    </Type>
-  </Table>
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db" Class="baseballDataContext" AccessModifier="Internal" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\data\db.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="com.mxply.app.baseball.lib.Properties.Settings" SettingsPropertyName="dbConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Team" Member="Teams">
     <Type Name="Team">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Team_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="TeamId" Type="MatchLineUp" />
       <Association Name="Club_Team" Member="Club" ThisKey="ClubId" OtherKey="Id" Type="Club" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Championship" Member="Championships">
+    <Type Name="Championship">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Championship_ChampionshipOrganizer" Member="ChampionshipOrganizers" ThisKey="Id" OtherKey="ChampionshipId" Type="ChampionshipOrganizer" />
+      <Association Name="ChampionshipType_Championship" Member="ChampionshipType" ThisKey="TypeId" OtherKey="Id" Type="ChampionshipType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ChampionshipOrganizer" Member="ChampionshipOrganizers">
@@ -39,6 +41,7 @@
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="FederationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Club_Team" Member="Teams" ThisKey="Id" OtherKey="ClubId" Type="Team" />
       <Association Name="Federation_Club" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
     </Type>
@@ -47,6 +50,7 @@
     <Type Name="Federation">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Federation_ChampionshipOrganizer" Member="ChampionshipOrganizers" ThisKey="Id" OtherKey="FederationId" Type="ChampionshipOrganizer" />
       <Association Name="Federation_Club" Member="Clubs" ThisKey="Id" OtherKey="FederationId" Type="Club" />
       <Association Name="Federation_License" Member="Licenses" ThisKey="Id" OtherKey="FederationId" Type="License" />
@@ -112,6 +116,7 @@
       <Column Name="InPersonId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="PositionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="InningId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Time" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
       <Association Name="Inning_MatchChange" Member="Inning" ThisKey="InningId" OtherKey="Id" Type="Inning" IsForeignKey="true" />
       <Association Name="Person_MatchChange" Member="Person" ThisKey="InPersonId" OtherKey="Id" Type="Person" IsForeignKey="true" />
       <Association Name="Person_MatchChange1" Member="Person1" ThisKey="OutPersonId" OtherKey="Id" Type="Person" IsForeignKey="true" />
@@ -173,6 +178,7 @@
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Person_License" Member="Licenses" ThisKey="Id" OtherKey="PersonId" Type="License" />
       <Association Name="Person_MatchChange" Member="MatchChanges" ThisKey="Id" OtherKey="InPersonId" Type="MatchChange" />
       <Association Name="Person_MatchChange1" Member="MatchChanges1" ThisKey="Id" OtherKey="OutPersonId" Type="MatchChange" />
