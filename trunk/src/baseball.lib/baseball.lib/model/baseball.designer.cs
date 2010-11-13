@@ -23,19 +23,19 @@ namespace com.mxply.app.baseball.lib.model
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="db")]
-	public partial class baseballDataContext : System.Data.Linq.DataContext
+	internal partial class baseballDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertChampionship(Championship instance);
-    partial void UpdateChampionship(Championship instance);
-    partial void DeleteChampionship(Championship instance);
     partial void InsertTeam(Team instance);
     partial void UpdateTeam(Team instance);
     partial void DeleteTeam(Team instance);
+    partial void InsertChampionship(Championship instance);
+    partial void UpdateChampionship(Championship instance);
+    partial void DeleteChampionship(Championship instance);
     partial void InsertChampionshipOrganizer(ChampionshipOrganizer instance);
     partial void UpdateChampionshipOrganizer(ChampionshipOrganizer instance);
     partial void DeleteChampionshipOrganizer(ChampionshipOrganizer instance);
@@ -90,7 +90,7 @@ namespace com.mxply.app.baseball.lib.model
     #endregion
 		
 		public baseballDataContext() : 
-				base(global::com.mxply.app.baseball.lib.Properties.Settings.Default.dbConnectionString1, mappingSource)
+				base(global::com.mxply.app.baseball.lib.Properties.Settings.Default.dbConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -119,19 +119,19 @@ namespace com.mxply.app.baseball.lib.model
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Championship> Championships
-		{
-			get
-			{
-				return this.GetTable<Championship>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Team> Teams
 		{
 			get
 			{
 				return this.GetTable<Team>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Championship> Championships
+		{
+			get
+			{
+				return this.GetTable<Championship>();
 			}
 		}
 		
@@ -272,185 +272,6 @@ namespace com.mxply.app.baseball.lib.model
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Championship")]
-	public partial class Championship : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _Name;
-		
-		private System.Guid _TypeId;
-		
-		private EntitySet<ChampionshipOrganizer> _ChampionshipOrganizers;
-		
-		private EntityRef<ChampionshipType> _ChampionshipType;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnTypeIdChanging(System.Guid value);
-    partial void OnTypeIdChanged();
-    #endregion
-		
-		public Championship()
-		{
-			this._ChampionshipOrganizers = new EntitySet<ChampionshipOrganizer>(new Action<ChampionshipOrganizer>(this.attach_ChampionshipOrganizers), new Action<ChampionshipOrganizer>(this.detach_ChampionshipOrganizers));
-			this._ChampionshipType = default(EntityRef<ChampionshipType>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid TypeId
-		{
-			get
-			{
-				return this._TypeId;
-			}
-			set
-			{
-				if ((this._TypeId != value))
-				{
-					if (this._ChampionshipType.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTypeIdChanging(value);
-					this.SendPropertyChanging();
-					this._TypeId = value;
-					this.SendPropertyChanged("TypeId");
-					this.OnTypeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Championship_ChampionshipOrganizer", Storage="_ChampionshipOrganizers", ThisKey="Id", OtherKey="ChampionshipId")]
-		public EntitySet<ChampionshipOrganizer> ChampionshipOrganizers
-		{
-			get
-			{
-				return this._ChampionshipOrganizers;
-			}
-			set
-			{
-				this._ChampionshipOrganizers.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChampionshipType_Championship", Storage="_ChampionshipType", ThisKey="TypeId", OtherKey="Id", IsForeignKey=true)]
-		public ChampionshipType ChampionshipType
-		{
-			get
-			{
-				return this._ChampionshipType.Entity;
-			}
-			set
-			{
-				ChampionshipType previousValue = this._ChampionshipType.Entity;
-				if (((previousValue != value) 
-							|| (this._ChampionshipType.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ChampionshipType.Entity = null;
-						previousValue.Championships.Remove(this);
-					}
-					this._ChampionshipType.Entity = value;
-					if ((value != null))
-					{
-						value.Championships.Add(this);
-						this._TypeId = value.Id;
-					}
-					else
-					{
-						this._TypeId = default(System.Guid);
-					}
-					this.SendPropertyChanged("ChampionshipType");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ChampionshipOrganizers(ChampionshipOrganizer entity)
-		{
-			this.SendPropertyChanging();
-			entity.Championship = this;
-		}
-		
-		private void detach_ChampionshipOrganizers(ChampionshipOrganizer entity)
-		{
-			this.SendPropertyChanging();
-			entity.Championship = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Team")]
 	public partial class Team : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -462,6 +283,8 @@ namespace com.mxply.app.baseball.lib.model
 		private string _Name;
 		
 		private System.Guid _ClubId;
+		
+		private bool _Active;
 		
 		private EntitySet<MatchLineUp> _MatchLineUps;
 		
@@ -477,6 +300,8 @@ namespace com.mxply.app.baseball.lib.model
     partial void OnNameChanged();
     partial void OnClubIdChanging(System.Guid value);
     partial void OnClubIdChanged();
+    partial void OnActiveChanging(bool value);
+    partial void OnActiveChanged();
     #endregion
 		
 		public Team()
@@ -546,6 +371,26 @@ namespace com.mxply.app.baseball.lib.model
 					this._ClubId = value;
 					this.SendPropertyChanged("ClubId");
 					this.OnClubIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit NOT NULL")]
+		public bool Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
 				}
 			}
 		}
@@ -627,6 +472,209 @@ namespace com.mxply.app.baseball.lib.model
 		{
 			this.SendPropertyChanging();
 			entity.Team = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Championship")]
+	public partial class Championship : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _Name;
+		
+		private System.Guid _TypeId;
+		
+		private bool _Active;
+		
+		private EntitySet<ChampionshipOrganizer> _ChampionshipOrganizers;
+		
+		private EntityRef<ChampionshipType> _ChampionshipType;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnTypeIdChanging(System.Guid value);
+    partial void OnTypeIdChanged();
+    partial void OnActiveChanging(bool value);
+    partial void OnActiveChanged();
+    #endregion
+		
+		public Championship()
+		{
+			this._ChampionshipOrganizers = new EntitySet<ChampionshipOrganizer>(new Action<ChampionshipOrganizer>(this.attach_ChampionshipOrganizers), new Action<ChampionshipOrganizer>(this.detach_ChampionshipOrganizers));
+			this._ChampionshipType = default(EntityRef<ChampionshipType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid TypeId
+		{
+			get
+			{
+				return this._TypeId;
+			}
+			set
+			{
+				if ((this._TypeId != value))
+				{
+					if (this._ChampionshipType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._TypeId = value;
+					this.SendPropertyChanged("TypeId");
+					this.OnTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit NOT NULL")]
+		public bool Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Championship_ChampionshipOrganizer", Storage="_ChampionshipOrganizers", ThisKey="Id", OtherKey="ChampionshipId")]
+		public EntitySet<ChampionshipOrganizer> ChampionshipOrganizers
+		{
+			get
+			{
+				return this._ChampionshipOrganizers;
+			}
+			set
+			{
+				this._ChampionshipOrganizers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChampionshipType_Championship", Storage="_ChampionshipType", ThisKey="TypeId", OtherKey="Id", IsForeignKey=true)]
+		public ChampionshipType ChampionshipType
+		{
+			get
+			{
+				return this._ChampionshipType.Entity;
+			}
+			set
+			{
+				ChampionshipType previousValue = this._ChampionshipType.Entity;
+				if (((previousValue != value) 
+							|| (this._ChampionshipType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ChampionshipType.Entity = null;
+						previousValue.Championships.Remove(this);
+					}
+					this._ChampionshipType.Entity = value;
+					if ((value != null))
+					{
+						value.Championships.Add(this);
+						this._TypeId = value.Id;
+					}
+					else
+					{
+						this._TypeId = default(System.Guid);
+					}
+					this.SendPropertyChanged("ChampionshipType");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ChampionshipOrganizers(ChampionshipOrganizer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Championship = this;
+		}
+		
+		private void detach_ChampionshipOrganizers(ChampionshipOrganizer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Championship = null;
 		}
 	}
 	
@@ -948,6 +996,8 @@ namespace com.mxply.app.baseball.lib.model
 		
 		private System.Guid _FederationId;
 		
+		private bool _Active;
+		
 		private EntitySet<Team> _Teams;
 		
 		private EntityRef<Federation> _Federation;
@@ -962,6 +1012,8 @@ namespace com.mxply.app.baseball.lib.model
     partial void OnNameChanged();
     partial void OnFederationIdChanging(System.Guid value);
     partial void OnFederationIdChanged();
+    partial void OnActiveChanging(bool value);
+    partial void OnActiveChanged();
     #endregion
 		
 		public Club()
@@ -1031,6 +1083,26 @@ namespace com.mxply.app.baseball.lib.model
 					this._FederationId = value;
 					this.SendPropertyChanged("FederationId");
 					this.OnFederationIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit NOT NULL")]
+		public bool Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
 				}
 			}
 		}
@@ -1125,6 +1197,8 @@ namespace com.mxply.app.baseball.lib.model
 		
 		private string _Name;
 		
+		private bool _Active;
+		
 		private EntitySet<ChampionshipOrganizer> _ChampionshipOrganizers;
 		
 		private EntitySet<Club> _Clubs;
@@ -1139,6 +1213,8 @@ namespace com.mxply.app.baseball.lib.model
     partial void OnIdChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
+    partial void OnActiveChanging(bool value);
+    partial void OnActiveChanged();
     #endregion
 		
 		public Federation()
@@ -1185,6 +1261,26 @@ namespace com.mxply.app.baseball.lib.model
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit NOT NULL")]
+		public bool Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
 				}
 			}
 		}
@@ -2367,6 +2463,8 @@ namespace com.mxply.app.baseball.lib.model
 		
 		private System.Guid _InningId;
 		
+		private System.TimeSpan _Time;
+		
 		private EntityRef<Inning> _Inning;
 		
 		private EntityRef<Person> _Person;
@@ -2389,6 +2487,8 @@ namespace com.mxply.app.baseball.lib.model
     partial void OnPositionIdChanged();
     partial void OnInningIdChanging(System.Guid value);
     partial void OnInningIdChanged();
+    partial void OnTimeChanging(System.TimeSpan value);
+    partial void OnTimeChanged();
     #endregion
 		
 		public MatchChange()
@@ -2512,6 +2612,26 @@ namespace com.mxply.app.baseball.lib.model
 					this._InningId = value;
 					this.SendPropertyChanged("InningId");
 					this.OnInningIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="Time NOT NULL")]
+		public System.TimeSpan Time
+		{
+			get
+			{
+				return this._Time;
+			}
+			set
+			{
+				if ((this._Time != value))
+				{
+					this.OnTimeChanging(value);
+					this.SendPropertyChanging();
+					this._Time = value;
+					this.SendPropertyChanged("Time");
+					this.OnTimeChanged();
 				}
 			}
 		}
@@ -3718,6 +3838,8 @@ namespace com.mxply.app.baseball.lib.model
 		
 		private string _LastName;
 		
+		private bool _Active;
+		
 		private EntitySet<License> _Licenses;
 		
 		private EntitySet<MatchChange> _MatchChanges;
@@ -3738,6 +3860,8 @@ namespace com.mxply.app.baseball.lib.model
     partial void OnFirstNameChanged();
     partial void OnLastNameChanging(string value);
     partial void OnLastNameChanged();
+    partial void OnActiveChanging(bool value);
+    partial void OnActiveChanged();
     #endregion
 		
 		public Person()
@@ -3806,6 +3930,26 @@ namespace com.mxply.app.baseball.lib.model
 					this._LastName = value;
 					this.SendPropertyChanged("LastName");
 					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit NOT NULL")]
+		public bool Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
 				}
 			}
 		}
