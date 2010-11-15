@@ -16,7 +16,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.club
             _club = club;
         }
 
-        public new model.Club execute(BaseCache cache)
+        public new model.Club execute(ICache cache)
         {
             return (model.Club)base.execute(cache);
         }
@@ -31,11 +31,14 @@ namespace com.mxply.app.baseball.lib.bl.actions.club
                 {
                     model.Club temp = db.Clubs.Where(o => o.Id == _club.Id).SingleOrDefault();
                     if (temp == null)
+                    {
+                        _club.Active = true;
                         db.Clubs.InsertOnSubmit(_club);
+                    }
                     else
                     {
                         temp.Name = _club.Name;
-                        temp.FederationId = _club.FederationId;
+                        temp.Address = _club.Address;
                     }
 
                     db.SubmitChanges();

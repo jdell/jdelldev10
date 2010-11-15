@@ -57,9 +57,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bl\actions\championshiptype\doGetAll.cs" />
+    <Compile Include="bl\actions\championshiptype\doGetByInternalId.cs" />
+    <Compile Include="bl\actions\championship\doGenerateMatchsNextRound.cs" />
+    <Compile Include="bl\actions\championship\doGenerateMatchs.cs" />
     <Compile Include="bl\actions\club\doDelete.cs" />
     <Compile Include="bl\actions\club\doGetAll.cs" />
     <Compile Include="bl\actions\club\doSave.cs" />
+    <Compile Include="bl\actions\championship\doDelete.cs" />
+    <Compile Include="bl\actions\championship\doGetAll.cs" />
+    <Compile Include="bl\actions\championship\doSave.cs" />
+    <Compile Include="bl\actions\stadium\doDelete.cs" />
+    <Compile Include="bl\actions\stadium\doGetAll.cs" />
+    <Compile Include="bl\actions\stadium\doSave.cs" />
+    <Compile Include="bl\actions\dbintegrity\doClearAll.cs" />
+    <Compile Include="bl\actions\license\doDelete.cs" />
+    <Compile Include="bl\actions\license\doGetAll.cs" />
+    <Compile Include="bl\actions\license\doSave.cs" />
+    <Compile Include="bl\actions\licensetype\doGetByInternalId.cs" />
     <Compile Include="bl\actions\person\doDelete.cs" />
     <Compile Include="bl\actions\person\doGetAll.cs" />
     <Compile Include="bl\actions\person\doSave.cs" />
@@ -79,16 +93,22 @@
     <Compile Include="bl\core\Check.cs" />
     <Compile Include="bl\exceptions\BaseballException.cs" />
     <Compile Include="common\enums\ChampionshipType.cs" />
-    <Compile Include="common\enums\Position.cs" />
-    <Compile Include="common\enums\MovementType.cs" />
-    <Compile Include="common\enums\MatchStatus.cs" />
     <Compile Include="common\enums\LicenseType.cs" />
+    <Compile Include="common\enums\MatchStatus.cs" />
+    <Compile Include="common\enums\MovementType.cs" />
+    <Compile Include="common\enums\Position.cs" />
+    <Compile Include="ws\model\enums\Position.cs" />
+    <Compile Include="ws\model\enums\MovementType.cs" />
+    <Compile Include="ws\model\enums\MatchStatus.cs" />
+    <Compile Include="model\Address.cs" />
     <Compile Include="model\baseball.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>baseball.dbml</DependentUpon>
     </Compile>
     <Compile Include="model\Club.cs" />
+    <Compile Include="model\Championship.cs" />
+    <Compile Include="model\License.cs" />
     <Compile Include="model\MovementType.cs" />
     <Compile Include="model\LicenseType.cs" />
     <Compile Include="model\MatchStatus.cs" />
@@ -96,6 +116,7 @@
     <Compile Include="model\Position.cs" />
     <Compile Include="model\Federation.cs" />
     <Compile Include="model\Person.cs" />
+    <Compile Include="model\Stadium.cs" />
     <Compile Include="model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -103,10 +124,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ws\model\Championship.cs" />
+    <Compile Include="ws\model\Inning.cs" />
+    <Compile Include="ws\model\Match.cs" />
+    <Compile Include="ws\model\MatchChange.cs" />
+    <Compile Include="ws\model\MatchLineUp.cs" />
+    <Compile Include="ws\model\Movement.cs" />
+    <Compile Include="ws\model\MovementDetail.cs" />
+    <Compile Include="ws\model\Person.cs" />
+    <Compile Include="ws\model\Stadium.cs" />
+    <Compile Include="ws\model\Team.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="common\attributes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="data\db.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -13,7 +13,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.championshiptype
         }
 
 
-        public new List<model.ChampionshipType> execute(BaseCache cache)
+        public new List<model.ChampionshipType> execute(ICache cache)
         {
             return (List<model.ChampionshipType>)base.execute(cache);
         }

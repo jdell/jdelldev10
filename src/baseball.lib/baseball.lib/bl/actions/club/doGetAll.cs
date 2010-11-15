@@ -13,7 +13,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.club
         }
 
 
-        public new List<model.Club> execute(BaseCache cache)
+        public new List<model.Club> execute(ICache cache)
         {
             return (List<model.Club>)base.execute(cache);
         }

@@ -15,7 +15,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.federation
         }
 
 
-        public new model.Federation execute(BaseCache cache)
+        public new model.Federation execute(ICache cache)
         {
             return (model.Federation)base.execute(cache);
         }

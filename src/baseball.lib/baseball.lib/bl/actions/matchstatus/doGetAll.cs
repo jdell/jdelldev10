@@ -13,7 +13,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.matchstatus
         }
 
 
-        public new List<model.MatchStatus> execute(BaseCache cache)
+        public new List<model.MatchStatus> execute(ICache cache)
         {
             return (List<model.MatchStatus>)base.execute(cache);
         }

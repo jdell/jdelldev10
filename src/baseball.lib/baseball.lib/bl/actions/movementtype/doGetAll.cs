@@ -13,7 +13,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.movementtype
         }
 
 
-        public new List<model.MovementType> execute(BaseCache cache)
+        public new List<model.MovementType> execute(ICache cache)
         {
             return (List<model.MovementType>)base.execute(cache);
         }

@@ -13,7 +13,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.position
         }
 
 
-        public new List<model.Position> execute(BaseCache cache)
+        public new List<model.Position> execute(ICache cache)
         {
             return (List<model.Position>)base.execute(cache);
         }

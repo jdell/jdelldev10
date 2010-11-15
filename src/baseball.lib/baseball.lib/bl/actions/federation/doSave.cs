@@ -16,7 +16,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.federation
             _federation = federation;
         }
 
-        public new model.Federation execute(BaseCache cache)
+        public new model.Federation execute(ICache cache)
         {
             return (model.Federation)base.execute(cache);
         }
@@ -31,7 +31,10 @@ namespace com.mxply.app.baseball.lib.bl.actions.federation
                 {
                     model.Federation temp = db.Federations.Where(o => o.Id == _federation.Id).SingleOrDefault();
                     if (temp == null)
+                    {
+                        _federation.Active = true;
                         db.Federations.InsertOnSubmit(_federation);
+                    }
                     else
                     {
                         temp.Name = _federation.Name;

@@ -1,23 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db" Class="baseballDataContext" AccessModifier="Internal" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\data\db.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="com.mxply.app.baseball.lib.Properties.Settings" SettingsPropertyName="dbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Address" Member="Addresses">
+    <Type Name="Address">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Address_Club" Member="Clubs" ThisKey="Id" OtherKey="AddressId" Type="Club" />
+      <Association Name="Address_Federation" Member="Federations" ThisKey="Id" OtherKey="AddressId" Type="Federation" />
+      <Association Name="Address_Person" Member="Persons" ThisKey="Id" OtherKey="AddressId" Type="Person" />
+      <Association Name="Address_Stadium" Member="Stadiums" ThisKey="Id" OtherKey="AddressId" Type="Stadium" />
+    </Type>
+  </Table>
   <Table Name="dbo.Team" Member="Teams">
     <Type Name="Team">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="ClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FederationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LicenseTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Team_ChampionshipTeam" Member="ChampionshipTeams" ThisKey="Id" OtherKey="TeamId" Type="ChampionshipTeam" />
+      <Association Name="Team_License" Member="Licenses" ThisKey="Id" OtherKey="TeamId" Type="License" />
       <Association Name="Team_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="TeamId" Type="MatchLineUp" />
       <Association Name="Club_Team" Member="Club" ThisKey="ClubId" OtherKey="Id" Type="Club" IsForeignKey="true" />
+      <Association Name="Federation_Team" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
+      <Association Name="LicenseType_Team" Member="LicenseType" ThisKey="LicenseTypeId" OtherKey="Id" Type="LicenseType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Championship" Member="Championships">
     <Type Name="Championship">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ChampionshipTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Championship_ChampionshipOrganizer" Member="ChampionshipOrganizers" ThisKey="Id" OtherKey="ChampionshipId" Type="ChampionshipOrganizer" />
-      <Association Name="ChampionshipType_Championship" Member="ChampionshipType" ThisKey="TypeId" OtherKey="Id" Type="ChampionshipType" IsForeignKey="true" />
+      <Association Name="Championship_ChampionshipTeam" Member="ChampionshipTeams" ThisKey="Id" OtherKey="ChampionshipId" Type="ChampionshipTeam" />
+      <Association Name="ChampionshipType_Championship" Member="ChampionshipType" ThisKey="ChampionshipTypeId" OtherKey="Id" Type="ChampionshipType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ChampionshipOrganizer" Member="ChampionshipOrganizers">
@@ -28,22 +49,30 @@
       <Association Name="Federation_ChampionshipOrganizer" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ChampionshipTeam" Member="ChampionshipTeams">
+    <Type Name="ChampionshipTeam">
+      <Column Name="ChampionshipId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TeamId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Championship_ChampionshipTeam" Member="Championship" ThisKey="ChampionshipId" OtherKey="Id" Type="Championship" IsForeignKey="true" />
+      <Association Name="Team_ChampionshipTeam" Member="Team" ThisKey="TeamId" OtherKey="Id" Type="Team" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.ChampionshipType" Member="ChampionshipTypes">
     <Type Name="ChampionshipType">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="InternalId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Association Name="ChampionshipType_Championship" Member="Championships" ThisKey="Id" OtherKey="TypeId" Type="Championship" />
+      <Association Name="ChampionshipType_Championship" Member="Championships" ThisKey="Id" OtherKey="ChampionshipTypeId" Type="Championship" />
     </Type>
   </Table>
   <Table Name="dbo.Club" Member="Clubs">
     <Type Name="Club">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="FederationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Club_Team" Member="Teams" ThisKey="Id" OtherKey="ClubId" Type="Team" />
-      <Association Name="Federation_Club" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
+      <Association Name="Address_Club" Member="Address" ThisKey="AddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Federation" Member="Federations">
@@ -51,9 +80,11 @@
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Federation_Team" Member="Teams" ThisKey="Id" OtherKey="FederationId" Type="Team" />
       <Association Name="Federation_ChampionshipOrganizer" Member="ChampionshipOrganizers" ThisKey="Id" OtherKey="FederationId" Type="ChampionshipOrganizer" />
-      <Association Name="Federation_Club" Member="Clubs" ThisKey="Id" OtherKey="FederationId" Type="Club" />
       <Association Name="Federation_License" Member="Licenses" ThisKey="Id" OtherKey="FederationId" Type="License" />
+      <Association Name="Address_Federation" Member="Address" ThisKey="AddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Inning" Member="Innings">
@@ -71,10 +102,12 @@
       <Column Name="FederationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="PersonId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="TypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LicenseTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TeamId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Federation_License" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
-      <Association Name="LicenseType_License" Member="LicenseType" ThisKey="TypeId" OtherKey="Id" Type="LicenseType" IsForeignKey="true" />
+      <Association Name="Team_License" Member="Team" ThisKey="TeamId" OtherKey="Id" Type="Team" IsForeignKey="true" />
+      <Association Name="LicenseType_License" Member="LicenseType" ThisKey="LicenseTypeId" OtherKey="Id" Type="LicenseType" IsForeignKey="true" />
       <Association Name="Person_License" Member="Person" ThisKey="PersonId" OtherKey="Id" Type="Person" IsForeignKey="true" />
     </Type>
   </Table>
@@ -89,7 +122,8 @@
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="InternalId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Association Name="LicenseType_License" Member="Licenses" ThisKey="Id" OtherKey="TypeId" Type="License" />
+      <Association Name="LicenseType_Team" Member="Teams" ThisKey="Id" OtherKey="LicenseTypeId" Type="Team" />
+      <Association Name="LicenseType_License" Member="Licenses" ThisKey="Id" OtherKey="LicenseTypeId" Type="License" />
     </Type>
   </Table>
   <Table Name="dbo.Match" Member="Matches">
@@ -97,16 +131,20 @@
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="HomeClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="GuestClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Ampager1Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Ampager2Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="Ampager3Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="Ampager4Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Umpire1Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Umpire2Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Umpire3Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Umpire4Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="ScoreTakerId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="StatusId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="ChampionshipId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="MatchStatusId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StadiumId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Match_Inning" Member="Innings" ThisKey="Id" OtherKey="MatchId" Type="Inning" />
       <Association Name="Match_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="MatchId" Type="MatchLineUp" />
+      <Association Name="MatchStatus_Match" Member="MatchStatus" ThisKey="MatchStatusId" OtherKey="Id" Type="MatchStatus" IsForeignKey="true" />
+      <Association Name="Person_Match" Member="Person" ThisKey="Umpire1Id" OtherKey="Id" Type="Person" IsForeignKey="true" />
+      <Association Name="Stadium_Match" Member="Stadium" ThisKey="StadiumId" OtherKey="Id" Type="Stadium" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MatchChange" Member="MatchChanges">
@@ -142,6 +180,7 @@
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="InternalId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="MatchStatus_Match" Member="Matches" ThisKey="Id" OtherKey="MatchStatusId" Type="Match" />
     </Type>
   </Table>
   <Table Name="dbo.Movement" Member="Movements">
@@ -179,11 +218,14 @@
       <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Person_License" Member="Licenses" ThisKey="Id" OtherKey="PersonId" Type="License" />
+      <Association Name="Person_Match" Member="Matches" ThisKey="Id" OtherKey="Umpire1Id" Type="Match" />
       <Association Name="Person_MatchChange" Member="MatchChanges" ThisKey="Id" OtherKey="InPersonId" Type="MatchChange" />
       <Association Name="Person_MatchChange1" Member="MatchChanges1" ThisKey="Id" OtherKey="OutPersonId" Type="MatchChange" />
       <Association Name="Person_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="PersonId" Type="MatchLineUp" />
       <Association Name="Person_MovementDetail" Member="MovementDetails" ThisKey="Id" OtherKey="PersonId" Type="MovementDetail" />
+      <Association Name="Address_Person" Member="Address" ThisKey="AddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Position" Member="Positions">
@@ -193,6 +235,15 @@
       <Column Name="InternalId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Association Name="Position_MatchChange" Member="MatchChanges" ThisKey="Id" OtherKey="PositionId" Type="MatchChange" />
       <Association Name="Position_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="PersonId" Type="MatchLineUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stadium" Member="Stadiums">
+    <Type Name="Stadium">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Stadium_Match" Member="Matches" ThisKey="Id" OtherKey="StadiumId" Type="Match" />
+      <Association Name="Address_Stadium" Member="Address" ThisKey="AddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
