@@ -13,7 +13,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.person
         }
 
 
-        public new List<model.Person> execute(BaseCache cache)
+        public new List<model.Person> execute(ICache cache)
         {
             return (List<model.Person>)base.execute(cache);
         }

@@ -15,7 +15,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.club
         }
 
 
-        public new model.Club execute(BaseCache cache)
+        public new model.Club execute(ICache cache)
         {
             return (model.Club)base.execute(cache);
         }

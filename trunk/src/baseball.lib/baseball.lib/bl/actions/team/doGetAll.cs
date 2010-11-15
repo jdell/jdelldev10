@@ -8,12 +8,21 @@ namespace com.mxply.app.baseball.lib.bl.actions.team
 {
     public class doGetAll : core.ActionBL
     {
-        public doGetAll()
+        common.enums.LicenseType _licenseType;
+        model.Federation _federation;
+        public doGetAll(common.enums.LicenseType licenseType)
         {
+            _licenseType = licenseType;
+            _federation = null;
+        }
+        public doGetAll(model.Federation federation, common.enums.LicenseType licenseType)
+        {
+            _licenseType = licenseType;
+            _federation = federation;
         }
 
 
-        public new List<model.Team> execute(BaseCache cache)
+        public new List<model.Team> execute(ICache cache)
         {
             return (List<model.Team>)base.execute(cache);
         }
@@ -25,7 +34,16 @@ namespace com.mxply.app.baseball.lib.bl.actions.team
                 List<model.Team> res = new List<model.Team>();
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {
-                    res = db.Teams.Where(o => o.Active).OrderBy(o => o.Name).ToList<model.Team>();
+                    var query = from t in db.Teams
+                                where t.Active && (_federation==null || _federation.Id==t.FederationId) && t.LicenseTypeId ==
+                                (
+                                  from lc in db.LicenseTypes
+                                  where lc.InternalId == model.LicenseType.Convert(_licenseType)
+                                  select lc.Id
+                                ).FirstOrDefault()
+                                select t;
+                    res = query.OrderBy(o => o.Name).ToList<model.Team>();
+                    //res = db.Teams.Where(o => o.Active).OrderBy(o => o.Name).ToList<model.Team>();
                 }
 
                 return res;

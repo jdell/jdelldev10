@@ -13,5 +13,6 @@ namespace com.mxply.app.baseball.lib.bl.core
         {
             return "com.mxply.app.baseball.lib.Properties.Settings.dbBaseballConnectionString";
         }
+
     }
 }

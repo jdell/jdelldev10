@@ -13,7 +13,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.licensetype
         }
 
 
-        public new List<model.LicenseType> execute(BaseCache cache)
+        public new List<model.LicenseType> execute(ICache cache)
         {
             return (List<model.LicenseType>)base.execute(cache);
         }

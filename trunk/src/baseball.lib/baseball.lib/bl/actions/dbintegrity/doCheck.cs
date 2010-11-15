@@ -10,7 +10,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.dbintegrity
 {
     internal class doCheck : core.ActionBL
     {
-        public new bool execute(BaseCache cache)
+        public new bool execute(ICache cache)
         {
             return (bool)base.execute(cache);
         }

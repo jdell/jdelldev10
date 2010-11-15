@@ -15,7 +15,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.team
         }
 
 
-        public new model.Team execute(BaseCache cache)
+        public new model.Team execute(ICache cache)
         {
             return (model.Team)base.execute(cache);
         }
@@ -24,7 +24,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.team
         {
             try
             {
-                core.Check.Team(this, _team);
+                core.Check.Team(this, _team, Cache);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {

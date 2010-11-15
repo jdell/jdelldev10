@@ -47,5 +47,20 @@ namespace com.mxply.app.baseball.lib.bl.core
                 throw ex;
             }
         }
+
+        public Guid GetNewId()
+        {
+            return Guid.NewGuid();
+        }
+        public bool IsEmpty(Guid id)
+        {
+            return id.Equals(Guid.Empty);
+        }
+
+        public void ClearDB()
+        {
+            actions.dbintegrity.doClearAll doClearAll = new actions.dbintegrity.doClearAll();
+            doClearAll.execute(this);
+        }
     }
 }

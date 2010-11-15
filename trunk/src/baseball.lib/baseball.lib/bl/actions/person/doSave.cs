@@ -8,7 +8,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.person
 {
-    public class doSave : core.ActionBL
+    internal class doSave : core.ActionBL
     {
         private model.Person _person = null;
         public doSave(model.Person person)
@@ -16,7 +16,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.person
             _person = person;
         }
 
-        public new model.Person execute(BaseCache cache)
+        public new model.Person execute(ICache cache)
         {
             return (model.Person)base.execute(cache);
         }
@@ -31,7 +31,10 @@ namespace com.mxply.app.baseball.lib.bl.actions.person
                 {
                     model.Person temp = db.Persons.Where(o => o.Id == _person.Id).SingleOrDefault();
                     if (temp == null)
+                    {
+                        _person.Active = true;
                         db.Persons.InsertOnSubmit(_person);
+                    }
                     else
                     {
                         temp.FirstName = _person.FirstName;

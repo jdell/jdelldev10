@@ -11,5 +11,14 @@ namespace com.mxply.app.baseball.lib.model
         {
             return this.Description;
         }
+        public static Byte Convert(common.enums.MatchStatus internalId)
+        {
+            return System.Convert.ToByte(internalId);
+        }
+        public static common.enums.MatchStatus Convert(Byte internalId)
+        {
+            //TODO: Complete it! - Enum
+            return (common.enums.MatchStatus)internalId;
+        }
     }
 }
