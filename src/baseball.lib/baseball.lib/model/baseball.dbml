@@ -25,6 +25,9 @@
       <Association Name="Team_ChampionshipTeam" Member="ChampionshipTeams" ThisKey="Id" OtherKey="TeamId" Type="ChampionshipTeam" />
       <Association Name="Team_License" Member="Licenses" ThisKey="Id" OtherKey="TeamId" Type="License" />
       <Association Name="Team_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="TeamId" Type="MatchLineUp" />
+      <Association Name="Team_Warning" Member="Warnings" ThisKey="Id" OtherKey="TeamId" Type="Warning" />
+      <Association Name="Team_Match" Member="Matches" ThisKey="Id" OtherKey="GuestClubId" Type="Match" />
+      <Association Name="Team_Match1" Member="Matches1" ThisKey="Id" OtherKey="HomeClubId" Type="Match" />
       <Association Name="Club_Team" Member="Club" ThisKey="ClubId" OtherKey="Id" Type="Club" IsForeignKey="true" />
       <Association Name="Federation_Team" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
       <Association Name="LicenseType_Team" Member="LicenseType" ThisKey="LicenseTypeId" OtherKey="Id" Type="LicenseType" IsForeignKey="true" />
@@ -38,6 +41,7 @@
       <Column Name="ChampionshipTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Championship_ChampionshipOrganizer" Member="ChampionshipOrganizers" ThisKey="Id" OtherKey="ChampionshipId" Type="ChampionshipOrganizer" />
       <Association Name="Championship_ChampionshipTeam" Member="ChampionshipTeams" ThisKey="Id" OtherKey="ChampionshipId" Type="ChampionshipTeam" />
+      <Association Name="Championship_Match" Member="Matches" ThisKey="Id" OtherKey="ChampionshipId" Type="Match" />
       <Association Name="ChampionshipType_Championship" Member="ChampionshipType" ThisKey="ChampionshipTypeId" OtherKey="Id" Type="ChampionshipType" IsForeignKey="true" />
     </Type>
   </Table>
@@ -105,6 +109,11 @@
       <Column Name="LicenseTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TeamId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="License_Match" Member="Matches" ThisKey="Id" OtherKey="ScoreTakerId" Type="Match" />
+      <Association Name="License_Match1" Member="Matches1" ThisKey="Id" OtherKey="Umpire1Id" Type="Match" />
+      <Association Name="License_Match2" Member="Matches2" ThisKey="Id" OtherKey="Umpire2Id" Type="Match" />
+      <Association Name="License_Match3" Member="Matches3" ThisKey="Id" OtherKey="Umpire3Id" Type="Match" />
+      <Association Name="License_Match4" Member="Matches4" ThisKey="Id" OtherKey="Umpire4Id" Type="Match" />
       <Association Name="Federation_License" Member="Federation" ThisKey="FederationId" OtherKey="Id" Type="Federation" IsForeignKey="true" />
       <Association Name="Team_License" Member="Team" ThisKey="TeamId" OtherKey="Id" Type="Team" IsForeignKey="true" />
       <Association Name="LicenseType_License" Member="LicenseType" ThisKey="LicenseTypeId" OtherKey="Id" Type="LicenseType" IsForeignKey="true" />
@@ -124,27 +133,6 @@
       <Column Name="InternalId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Association Name="LicenseType_Team" Member="Teams" ThisKey="Id" OtherKey="LicenseTypeId" Type="Team" />
       <Association Name="LicenseType_License" Member="Licenses" ThisKey="Id" OtherKey="LicenseTypeId" Type="License" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Match" Member="Matches">
-    <Type Name="Match">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HomeClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="GuestClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Umpire1Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Umpire2Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="Umpire3Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="Umpire4Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="ScoreTakerId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="ChampionshipId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="MatchStatusId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="StadiumId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Association Name="Match_Inning" Member="Innings" ThisKey="Id" OtherKey="MatchId" Type="Inning" />
-      <Association Name="Match_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="MatchId" Type="MatchLineUp" />
-      <Association Name="MatchStatus_Match" Member="MatchStatus" ThisKey="MatchStatusId" OtherKey="Id" Type="MatchStatus" IsForeignKey="true" />
-      <Association Name="Person_Match" Member="Person" ThisKey="Umpire1Id" OtherKey="Id" Type="Person" IsForeignKey="true" />
-      <Association Name="Stadium_Match" Member="Stadium" ThisKey="StadiumId" OtherKey="Id" Type="Stadium" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MatchChange" Member="MatchChanges">
@@ -169,10 +157,10 @@
       <Column Name="PositionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="PersonId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Number" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Association Name="Match_MatchLineUp" Member="Match" ThisKey="MatchId" OtherKey="Id" Type="Match" IsForeignKey="true" />
       <Association Name="Team_MatchLineUp" Member="Team" ThisKey="TeamId" OtherKey="Id" Type="Team" IsForeignKey="true" />
       <Association Name="Person_MatchLineUp" Member="Person" ThisKey="PersonId" OtherKey="Id" Type="Person" IsForeignKey="true" />
       <Association Name="Position_MatchLineUp" Member="Position" ThisKey="PersonId" OtherKey="Id" Type="Position" IsForeignKey="true" />
+      <Association Name="Match_MatchLineUp" Member="Match" ThisKey="MatchId" OtherKey="Id" Type="Match" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MatchStatus" Member="MatchStatus">
@@ -220,11 +208,11 @@
       <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="AddressId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Person_License" Member="Licenses" ThisKey="Id" OtherKey="PersonId" Type="License" />
-      <Association Name="Person_Match" Member="Matches" ThisKey="Id" OtherKey="Umpire1Id" Type="Match" />
       <Association Name="Person_MatchChange" Member="MatchChanges" ThisKey="Id" OtherKey="InPersonId" Type="MatchChange" />
       <Association Name="Person_MatchChange1" Member="MatchChanges1" ThisKey="Id" OtherKey="OutPersonId" Type="MatchChange" />
       <Association Name="Person_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="PersonId" Type="MatchLineUp" />
       <Association Name="Person_MovementDetail" Member="MovementDetails" ThisKey="Id" OtherKey="PersonId" Type="MovementDetail" />
+      <Association Name="Person_Warning" Member="Warnings" ThisKey="Id" OtherKey="PersonId" Type="Warning" />
       <Association Name="Address_Person" Member="Address" ThisKey="AddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
     </Type>
   </Table>
@@ -244,6 +232,57 @@
       <Column Name="AddressId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Association Name="Stadium_Match" Member="Matches" ThisKey="Id" OtherKey="StadiumId" Type="Match" />
       <Association Name="Address_Stadium" Member="Address" ThisKey="AddressId" OtherKey="Id" Type="Address" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WarningType" Member="WarningTypes">
+    <Type Name="WarningType">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InternalId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="WarningType_Warning" Member="Warnings" ThisKey="Id" OtherKey="WarningTypeId" Type="Warning" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Warning" Member="Warnings">
+    <Type Name="Warning">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WarningTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MatchId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PersonId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TeamId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="Person_Warning" Member="Person" ThisKey="PersonId" OtherKey="Id" Type="Person" IsForeignKey="true" />
+      <Association Name="Team_Warning" Member="Team" ThisKey="TeamId" OtherKey="Id" Type="Team" IsForeignKey="true" />
+      <Association Name="WarningType_Warning" Member="WarningType" ThisKey="WarningTypeId" OtherKey="Id" Type="WarningType" IsForeignKey="true" />
+      <Association Name="Match_Warning" Member="Match" ThisKey="MatchId" OtherKey="Id" Type="Match" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Match" Member="Matches">
+    <Type Name="Match">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HomeClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="GuestClubId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Umpire1Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Umpire2Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Umpire3Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Umpire4Id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ScoreTakerId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ChampionshipId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="MatchStatusId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StadiumId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Match_Inning" Member="Innings" ThisKey="Id" OtherKey="MatchId" Type="Inning" />
+      <Association Name="Match_MatchLineUp" Member="MatchLineUps" ThisKey="Id" OtherKey="MatchId" Type="MatchLineUp" />
+      <Association Name="Match_Warning" Member="Warnings" ThisKey="Id" OtherKey="MatchId" Type="Warning" />
+      <Association Name="Championship_Match" Member="Championship" ThisKey="ChampionshipId" OtherKey="Id" Type="Championship" IsForeignKey="true" />
+      <Association Name="Team_Match" Member="Team" ThisKey="GuestClubId" OtherKey="Id" Type="Team" IsForeignKey="true" />
+      <Association Name="Team_Match1" Member="Team1" ThisKey="HomeClubId" OtherKey="Id" Type="Team" IsForeignKey="true" />
+      <Association Name="MatchStatus_Match" Member="MatchStatus" ThisKey="MatchStatusId" OtherKey="Id" Type="MatchStatus" IsForeignKey="true" />
+      <Association Name="License_Match" Member="License" ThisKey="ScoreTakerId" OtherKey="Id" Type="License" IsForeignKey="true" />
+      <Association Name="Stadium_Match" Member="Stadium" ThisKey="StadiumId" OtherKey="Id" Type="Stadium" IsForeignKey="true" />
+      <Association Name="License_Match1" Member="License1" ThisKey="Umpire1Id" OtherKey="Id" Type="License" IsForeignKey="true" />
+      <Association Name="License_Match2" Member="License2" ThisKey="Umpire2Id" OtherKey="Id" Type="License" IsForeignKey="true" />
+      <Association Name="License_Match3" Member="License3" ThisKey="Umpire3Id" OtherKey="Id" Type="License" IsForeignKey="true" />
+      <Association Name="License_Match4" Member="License4" ThisKey="Umpire4Id" OtherKey="Id" Type="License" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
