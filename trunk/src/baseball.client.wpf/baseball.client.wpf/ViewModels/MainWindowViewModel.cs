@@ -6,6 +6,8 @@ using System.Windows.Input;
 using com.mxply.net.common.Commands;
 using com.mxply.net.common.EventAggregator;
 using com.mxply.app.baseball.client.wpf.Core;
+using com.mxply.net.common.Extensions;
+using System.Deployment.Application;
 
 namespace com.mxply.app.baseball.client.wpf.ViewModels
 {
@@ -17,7 +19,7 @@ namespace com.mxply.app.baseball.client.wpf.ViewModels
         private DelegateCommand<String> _goToPageCommand;
 
 
-        public MainWindowViewModel(Cache cache)
+        public MainWindowViewModel(ClientCache cache)
             : base(cache)
         {
             ServicesFactory.EventService.GetEvent<GenericEvent<string>>().Subscribe(
@@ -67,9 +69,9 @@ namespace com.mxply.app.baseball.client.wpf.ViewModels
                     v = assemblyName.Version;
                 }
 #if DEBUG
-                return String.Format("Concello Cambre - {0} v{1} -TESTMODE-", productName, v.ToString());
+                return String.Format("BaseBall - {0} v{1} -TESTMODE-", productName, v.ToString());
 #else
-                return String.Format("Concello Cambre - {0} v{1}", productName,v.ToString());
+                return String.Format("BaseBall - {0} v{1}", productName,v.ToString());
 #endif
             }
         }

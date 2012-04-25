@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using com.mxply.app.baseball.lib.bl.core;
 
 namespace baseball.client.wpf
 {
@@ -12,14 +13,7 @@ namespace baseball.client.wpf
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-
-            Views.MainWindow main = new Views.MainWindow() { DataContext = new com.mxply.app.baseball.client.wpf.ViewModels.MainWindowViewModel() };
-
-            main.Show();
-        }
+        static Cache LibCache = new Cache();
         protected override void OnStartup(StartupEventArgs e)
         {
             try
@@ -37,7 +31,9 @@ namespace baseball.client.wpf
                     new FrameworkPropertyMetadata(
                         System.Windows.Markup.XmlLanguage.GetLanguage(ietfLanguageTag)));
 
-                com.mxply.app.baseball.client.wpf.Core.Cache applicationCache = new com.mxply.app.baseball.client.wpf.Core.Cache();
+                com.mxply.app.baseball.client.wpf.Core.ClientCache applicationCache = new com.mxply.app.baseball.client.wpf.Core.ClientCache();
+                LibCache.InitializeApp();
+
 
                 //using (ConcelloCambreServiceClient service = applicationCache.CreateService())
                 //{
@@ -78,7 +74,7 @@ namespace baseball.client.wpf
             try
             {
                 base.OnExit(e);
-
+                LibCache.FinalizeApp();
             }
             catch (Exception ex)
             {
