@@ -110,10 +110,6 @@
       <Project>{322ED6E8-7BC5-40A3-9D6E-6B6445995CBB}</Project>
       <Name>baseball.lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\baseball.client.wpf.common\baseball.client.wpf.common.csproj">
-      <Project>{438D1821-613E-4759-B8BC-6C3CE30647B4}</Project>
-      <Name>baseball.client.wpf.common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
