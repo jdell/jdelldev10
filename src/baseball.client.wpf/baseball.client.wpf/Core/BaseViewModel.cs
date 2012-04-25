@@ -5,7 +5,7 @@ using System.Text;
 
 namespace com.mxply.app.baseball.client.wpf.Core
 {
-    internal class BaseViewModel
+    internal abstract class BaseViewModel : com.mxply.net.common.Core.ViewModelBase
     {
         private Cache _cache;
         protected BaseViewModel(Cache cache)
