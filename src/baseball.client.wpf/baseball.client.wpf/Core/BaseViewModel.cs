@@ -7,14 +7,14 @@ namespace com.mxply.app.baseball.client.wpf.Core
 {
     internal abstract class BaseViewModel : com.mxply.net.common.Core.ViewModelBase
     {
-        private Cache _cache;
-        protected BaseViewModel(Cache cache)
+        private ClientCache _cache;
+        protected BaseViewModel(ClientCache cache)
         {
             this.Name = this.GetType().Name;
             this.Cache = cache;
         }
 
-        public Cache Cache
+        public ClientCache Cache
         {
             get { return _cache; }
             private set { _cache = value; }

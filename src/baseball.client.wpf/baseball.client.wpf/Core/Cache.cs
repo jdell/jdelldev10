@@ -5,16 +5,18 @@ using System.Text;
 using System.Diagnostics;
 using System.ComponentModel;
 using com.mxply.net.common.EventAggregator;
+using com.mxply.app.baseball.lib.bl.core;
 
 namespace com.mxply.app.baseball.client.wpf.Core
 {
-    public class Cache : INotifyPropertyChanged
+    public class ClientCache : INotifyPropertyChanged
     {
         public Stack<String> History { get; private set; }
+        //public Cache LibCache { get; set; }
        
         public String PreviousPageName { get; set; }
 
-        public Cache()
+        public ClientCache()
         {
             History = new Stack<string>();
         }
