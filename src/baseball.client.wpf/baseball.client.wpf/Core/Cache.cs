@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.ComponentModel;
 using com.mxply.net.common.EventAggregator;
 using com.mxply.app.baseball.lib.bl.core;
+using com.mxply.net.logging;
 
 namespace com.mxply.app.baseball.client.wpf.Core
 {
@@ -59,9 +60,8 @@ namespace com.mxply.app.baseball.client.wpf.Core
         {
             try
             {
-                System.Windows.MessageBox.Show(ex.Message, "Exception: " + nameVM);
-                Trace.TraceError(string.Format("{0} - {1}", nameVM, ex.ToString()));
-                //LogUtil.Manager.Error(nameVM, ex);
+                System.Windows.MessageBox.Show(ex.ToString(), "Exception: " + nameVM);
+                LogUtil.Manager.Error(nameVM, ex);
             }
             catch (Exception exi)
             {
