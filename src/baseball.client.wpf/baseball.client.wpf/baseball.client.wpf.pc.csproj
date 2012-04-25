@@ -100,6 +100,10 @@
       <Project>{4F938980-8128-485A-9570-58FB2D384A52}</Project>
       <Name>mxply.net.common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\mxply.net\mxply.net.logging\mxply.net.logging.csproj">
+      <Project>{05CF521B-2FF6-49EF-ACAF-1BF356E12A67}</Project>
+      <Name>mxply.net.logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\baseball.lib.mvvm\baseball.lib.mvvm.csproj">
       <Project>{4F2CC15B-3150-4DD4-A51D-4877A1488113}</Project>
       <Name>baseball.lib.mvvm</Name>
