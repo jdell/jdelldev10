@@ -63,6 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\BaseViewModel.cs" />
+    <Compile Include="Core\Cache.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -105,6 +107,10 @@
     <ProjectReference Include="..\..\..\..\mxply.net\mxply.net.common\mxply.net.common.csproj">
       <Project>{4F938980-8128-485A-9570-58FB2D384A52}</Project>
       <Name>mxply.net.common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\baseball.lib.mvvm\baseball.lib.mvvm.csproj">
+      <Project>{4F2CC15B-3150-4DD4-A51D-4877A1488113}</Project>
+      <Name>baseball.lib.mvvm</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\baseball.lib\baseball.lib\baseball.lib.csproj">
       <Project>{322ED6E8-7BC5-40A3-9D6E-6B6445995CBB}</Project>
