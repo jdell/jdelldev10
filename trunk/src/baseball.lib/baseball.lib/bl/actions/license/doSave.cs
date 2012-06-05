@@ -8,24 +8,19 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.license
 {
-    public class doSave : core.ActionBL
+    public class doSave : core.ActionBL<model.License>
     {
         private model.License _license = null;
         public doSave(model.License license)
         {
             _license = license;
         }
-
-        public new model.License execute(ICache cache)
-        {
-            return (model.License)base.execute(cache);
-        }
-
-        protected override object action()
+        
+        protected override model.License action()
         {
             try
             {
-                core.Check.License(this, _license);
+                //core.Check.License(this, _license);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {

@@ -6,7 +6,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.championshiptype
 {
-    public class doGetByInternalId : core.ActionBL
+    public class doGetByInternalId : core.ActionBL<model.ChampionshipType>
     {
         common.enums.ChampionshipType _internalId;
         public doGetByInternalId(common.enums.ChampionshipType internalId)
@@ -14,13 +14,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.championshiptype
             _internalId = internalId;
         }
 
-
-        public new model.ChampionshipType execute(ICache cache)
-        {
-            return (model.ChampionshipType)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override model.ChampionshipType action()
         {
             try
             {

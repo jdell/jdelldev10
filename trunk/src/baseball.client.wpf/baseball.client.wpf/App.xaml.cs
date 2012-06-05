@@ -32,7 +32,7 @@ namespace baseball.client.wpf
                         System.Windows.Markup.XmlLanguage.GetLanguage(ietfLanguageTag)));
 
                 com.mxply.app.baseball.client.wpf.Core.ClientCache applicationCache = new com.mxply.app.baseball.client.wpf.Core.ClientCache();
-                LibCache.InitializeApp();
+                //TODO: LibCache.InitializeApp();
 
 
                 //using (ConcelloCambreServiceClient service = applicationCache.CreateService())

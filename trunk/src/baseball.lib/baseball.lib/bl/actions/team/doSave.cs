@@ -8,24 +8,19 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.team
 {
-    public class doSave : core.ActionBL
+    public class doSave : core.ActionBL<model.Team>
     {
         private model.Team _team = null;
         public doSave(model.Team team)
         {
             _team = team;
         }
-
-        public new model.Team execute(ICache cache)
-        {
-            return (model.Team)base.execute(cache);
-        }
-
-        protected override object action()
+        
+        protected override model.Team action()
         {
             try
             {
-                core.Check.Team(this, _team, Cache);
+                //core.Check.Team(this, _team, Cache);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {

@@ -6,7 +6,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.club
 {
-    public class doDelete : core.ActionBL
+    public class doDelete : core.ActionBL<model.Club>
     {
         private model.Club _club = null;
         public doDelete(model.Club club)
@@ -14,17 +14,11 @@ namespace com.mxply.app.baseball.lib.bl.actions.club
             _club = club;
         }
 
-
-        public new model.Club execute(ICache cache)
-        {
-            return (model.Club)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override model.Club action()
         {
             try
             {
-                core.Check.Club(this, _club);
+                //core.Check.Club(this, _club);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {

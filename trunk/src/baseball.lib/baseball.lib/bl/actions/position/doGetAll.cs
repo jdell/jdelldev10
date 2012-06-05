@@ -6,19 +6,13 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.position
 {
-    public class doGetAll : core.ActionBL
+    public class doGetAll : core.ActionBL<List<model.Position>>
     {
         public doGetAll()
         {
         }
 
-
-        public new List<model.Position> execute(ICache cache)
-        {
-            return (List<model.Position>)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override List<model.Position> action()
         {
             try
             {

@@ -8,7 +8,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.person
 {
-    internal class doSave : core.ActionBL
+    internal class doSave : core.ActionBL<model.Person>
     {
         private model.Person _person = null;
         public doSave(model.Person person)
@@ -16,16 +16,11 @@ namespace com.mxply.app.baseball.lib.bl.actions.person
             _person = person;
         }
 
-        public new model.Person execute(ICache cache)
-        {
-            return (model.Person)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override model.Person action()
         {
             try
             {
-                core.Check.Person(this, _person);
+                //core.Check.Person(this, _person);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {

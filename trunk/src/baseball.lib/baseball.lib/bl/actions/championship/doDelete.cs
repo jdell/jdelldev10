@@ -6,7 +6,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.championship
 {
-    public class doDelete : core.ActionBL
+    public class doDelete : core.ActionBL<model.Championship>
     {
         private model.Championship _championship = null;
         public doDelete(model.Championship championship)
@@ -14,17 +14,11 @@ namespace com.mxply.app.baseball.lib.bl.actions.championship
             _championship = championship;
         }
 
-
-        public new model.Championship execute(ICache cache)
-        {
-            return (model.Championship)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override model.Championship action()
         {
             try
             {
-                core.Check.Championship(this, _championship);
+                //core.Check.Championship(this, _championship);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {

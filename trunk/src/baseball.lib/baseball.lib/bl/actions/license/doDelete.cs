@@ -6,7 +6,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.license
 {
-    public class doDelete : core.ActionBL
+    public class doDelete : core.ActionBL<model.License>
     {
         private model.License _license = null;
         public doDelete(model.License license)
@@ -14,17 +14,11 @@ namespace com.mxply.app.baseball.lib.bl.actions.license
             _license = license;
         }
 
-
-        public new model.License execute(ICache cache)
-        {
-            return (model.License)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override model.License action()
         {
             try
             {
-                core.Check.License(this, _license);
+                //core.Check.License(this, _license);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {

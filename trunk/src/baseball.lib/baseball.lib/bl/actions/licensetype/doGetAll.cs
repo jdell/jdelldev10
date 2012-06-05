@@ -6,19 +6,13 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.licensetype
 {
-    public class doGetAll : core.ActionBL
+    public class doGetAll : core.ActionBL<List<model.LicenseType>>
     {
         public doGetAll()
         {
         }
 
-
-        public new List<model.LicenseType> execute(ICache cache)
-        {
-            return (List<model.LicenseType>)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override List<model.LicenseType> action()
         {
             try
             {

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using com.mxply.net.common.EventAggregator;
 
 namespace baseball.client.wpf.Views
 {
@@ -21,7 +22,15 @@ namespace baseball.client.wpf.Views
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            
+            ServicesFactory.EventService.GetEvent<GenericEvent<string>>().Subscribe(
+                s =>
+                {
+                    if (s.Topic == "CloseWindow")
+                        this.Close();
+                }
+                );
         }
     }
 }

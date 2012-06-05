@@ -6,7 +6,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.stadium
 {
-    internal class doDelete : core.ActionBL
+    internal class doDelete : core.ActionBL<model.Stadium>
     {
         private model.Stadium _stadium = null;
         public doDelete(model.Stadium stadium)
@@ -14,17 +14,11 @@ namespace com.mxply.app.baseball.lib.bl.actions.stadium
             _stadium = stadium;
         }
 
-
-        public new model.Stadium execute(ICache cache)
-        {
-            return (model.Stadium)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override model.Stadium action()
         {
             try
             {
-                core.Check.Stadium(this, _stadium);
+                //core.Check.Stadium(this, _stadium);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {
