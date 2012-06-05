@@ -83,9 +83,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Expander}">
-                        <DockPanel>
+                        <DockPanel Width="200">
                             <ToggleButton x:Name="ExpanderButton"
-                      DockPanel.Dock="Top"
+                      DockPanel.Dock="Bottom" HorizontalAlignment="Center"
                       Template="{StaticResource SimpleExpanderButtonTemp}"
                       Content="{TemplateBinding Header}"
                       IsChecked="{Binding Path=IsExpanded, 
@@ -95,7 +95,7 @@
                             </ToggleButton>
                             <ContentPresenter x:Name="ExpanderContent"
                           Visibility="Collapsed"
-                          DockPanel.Dock="Bottom"/>
+                          DockPanel.Dock="Top"/>
                         </DockPanel>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsExpanded" Value="True">
@@ -111,6 +111,9 @@
     <Grid>
         <Border BorderThickness="5" BorderBrush="Blue">
             <Grid>
+                <Grid HorizontalAlignment="Stretch" Background="SkyBlue">
+                    <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Text="Body" />
+                </Grid>
                 <Expander VerticalAlignment="Top" >
                     <Grid>
                         <!--<Grid.ColumnDefinitions>
@@ -127,7 +130,6 @@
                         <Button Grid.Row="2" Content="Exit" Command="{Binding CloseCommand}" />
                     </Grid>
                 </Expander>
-                <TextBlock VerticalAlignment="Bottom" Text="Body" />
             </Grid>
         </Border>
     </Grid>
