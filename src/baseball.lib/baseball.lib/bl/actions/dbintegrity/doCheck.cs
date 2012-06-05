@@ -8,14 +8,9 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.dbintegrity
 {
-    internal class doCheck : core.ActionBL
+    internal class doCheck : core.ActionBL<bool>
     {
-        public new bool execute(ICache cache)
-        {
-            return (bool)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override bool action()
         {
             try
             {

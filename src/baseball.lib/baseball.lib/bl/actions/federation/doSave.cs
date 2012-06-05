@@ -8,7 +8,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.federation
 {
-    public class doSave : core.ActionBL
+    public class doSave : core.ActionBL<model.Federation>
     {
         private model.Federation _federation = null;
         public doSave(model.Federation federation)
@@ -16,16 +16,11 @@ namespace com.mxply.app.baseball.lib.bl.actions.federation
             _federation = federation;
         }
 
-        public new model.Federation execute(ICache cache)
-        {
-            return (model.Federation)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override model.Federation action()
         {
             try
             {
-                core.Check.Federation(this, _federation);
+                //core.Check.Federation(this, _federation);
 
                 using (model.baseballDataContext db = new model.baseballDataContext(this.ConnectionString))
                 {

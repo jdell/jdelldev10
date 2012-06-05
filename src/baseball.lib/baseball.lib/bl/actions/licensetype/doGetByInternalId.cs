@@ -6,7 +6,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.licensetype
 {
-    public class doGetByInternalId : core.ActionBL
+    public class doGetByInternalId : core.ActionBL<model.LicenseType>
     {
         common.enums.LicenseType _internalId;
         public doGetByInternalId(common.enums.LicenseType internalId)
@@ -14,13 +14,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.licensetype
             _internalId = internalId;
         }
 
-
-        public new model.LicenseType execute(ICache cache)
-        {
-            return (model.LicenseType)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override model.LicenseType action()
         {
             try
             {

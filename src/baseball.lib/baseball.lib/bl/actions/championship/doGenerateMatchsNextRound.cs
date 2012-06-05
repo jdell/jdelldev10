@@ -8,7 +8,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.championship
 {
-    public class doGenerateMatchsNextRound : core.ActionBL
+    public class doGenerateMatchsNextRound : core.ActionBL<List<model.Match>>
     {
         private model.Championship _championship = null;
         DateTime _firstMatchDate;
@@ -18,16 +18,11 @@ namespace com.mxply.app.baseball.lib.bl.actions.championship
             _firstMatchDate = firstMatchDate;
         }
 
-        public new List<model.Match> execute(ICache cache)
-        {
-            return (List<model.Match>)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override List<model.Match> action()
         {
             try
             {
-                core.Check.Championship(this, _championship);
+                //core.Check.Championship(this, _championship);
 
                 //TODO: Championship - NextRound
                 //League - Playoffs

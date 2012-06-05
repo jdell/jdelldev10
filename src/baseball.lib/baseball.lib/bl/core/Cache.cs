@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.core
 {
@@ -40,7 +41,11 @@ namespace com.mxply.app.baseball.lib.bl.core
             {
                 actions.dbintegrity.doCheck doCheck = new actions.dbintegrity.doCheck();
 
-                return doCheck.execute(this);
+                Result<bool> res = doCheck.execute(this);
+                if (res.Success)
+                    return res.Value;
+                else
+                    throw res.Error.InnerException;
             }
             catch (Exception ex)
             {

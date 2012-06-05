@@ -17,6 +17,7 @@ namespace com.mxply.app.baseball.client.wpf.ViewModels
         private Core.BaseViewModel _currentPage;
 
         private DelegateCommand<String> _goToPageCommand;
+        private DelegateCommand _closeCommand;
 
 
         public MainWindowViewModel(ClientCache cache)
@@ -49,6 +50,20 @@ namespace com.mxply.app.baseball.client.wpf.ViewModels
         private bool CanGoToPage(string pageName)
         {
             return Pages != null && Pages.Count(o => o.Name == pageName) > 0;
+        }
+        public DelegateCommand CloseCommand
+        {
+            get
+            {
+                if (_closeCommand == null)
+                    _closeCommand = new DelegateCommand(OnClose);
+                return _closeCommand;
+            }
+        }
+
+        private void OnClose()
+        {
+            this.Name.PublishEvent("CloseWindow");
         }
         public string Title
         {

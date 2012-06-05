@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using com.mxply.net.common.Core;
+using com.mxply.app.baseball.lib.model;
 
 namespace com.mxply.app.baseball.lib.bl.actions.match
 {
-    public class doGet : core.ActionBL
+    public class doGet : core.ActionBL<Match>
     {
         private Guid _id;
         public doGet(Guid id)
@@ -14,13 +15,8 @@ namespace com.mxply.app.baseball.lib.bl.actions.match
             _id = id;
         }
 
-
-        public new model.Match execute(ICache cache)
-        {
-            return (model.Match)base.execute(cache);
-        }
-
-        protected override object action()
+        
+        protected override Match action()
         {
             try
             {

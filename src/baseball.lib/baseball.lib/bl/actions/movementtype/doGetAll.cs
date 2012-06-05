@@ -6,19 +6,13 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.movementtype
 {
-    public class doGetAll : core.ActionBL
+    public class doGetAll : core.ActionBL<List<model.MovementType>>
     {
         public doGetAll()
         {
         }
 
-
-        public new List<model.MovementType> execute(ICache cache)
-        {
-            return (List<model.MovementType>)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override List<model.MovementType> action()
         {
             try
             {

@@ -6,19 +6,13 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.matchstatus
 {
-    public class doGetAll : core.ActionBL
+    public class doGetAll : core.ActionBL<List<model.MatchStatus>>
     {
         public doGetAll()
         {
         }
 
-
-        public new List<model.MatchStatus> execute(ICache cache)
-        {
-            return (List<model.MatchStatus>)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override List<model.MatchStatus> action()
         {
             try
             {

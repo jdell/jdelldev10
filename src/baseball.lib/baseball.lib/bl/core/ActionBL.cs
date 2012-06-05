@@ -7,7 +7,7 @@ using Mxply = com.mxply.net.common;
 
 namespace com.mxply.app.baseball.lib.bl.core
 {
-    public abstract class ActionBL:Mxply.Core.ActionBL
+    public abstract class ActionBL<T>:Mxply.Core.ActionBL<T>
     {
         protected override string GetConnectionName()
         {

@@ -6,7 +6,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.team
 {
-    public class doGetAll : core.ActionBL
+    public class doGetAll : core.ActionBL<List<model.Team>>
     {
         common.enums.LicenseType _licenseType;
         model.Federation _federation;
@@ -21,13 +21,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.team
             _federation = federation;
         }
 
-
-        public new List<model.Team> execute(ICache cache)
-        {
-            return (List<model.Team>)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override List<model.Team> action()
         {
             try
             {

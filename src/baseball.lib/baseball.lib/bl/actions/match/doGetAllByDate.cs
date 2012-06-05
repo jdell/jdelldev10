@@ -6,7 +6,7 @@ using com.mxply.net.common.Core;
 
 namespace com.mxply.app.baseball.lib.bl.actions.match
 {
-    public class doGetAllByDate : core.ActionBL
+    public class doGetAllByDate : core.ActionBL<List<model.Match>>
     {
         private DateTime _date;
         public doGetAllByDate(DateTime date)
@@ -14,13 +14,7 @@ namespace com.mxply.app.baseball.lib.bl.actions.match
             _date = date;
         }
 
-
-        public new List<model.Match> execute(ICache cache)
-        {
-            return (List<model.Match>)base.execute(cache);
-        }
-
-        protected override object action()
+        protected override List<model.Match> action()
         {
             try
             {
